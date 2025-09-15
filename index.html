@@ -144,7 +144,7 @@
         /* Main Content */
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 0 1rem;
             flex: 1;
         }
@@ -153,27 +153,72 @@
             text-align: center;
             margin-bottom: 2rem;
             color: #2563eb;
+            padding-top: 1.5rem;
         }
         
         /* Video Section */
         .video-container {
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            border-radius: 10px;
+            height: 70vh;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .video-container video {
             width: 100%;
-            display: block;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .video-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .video-overlay p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
         }
         
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+            padding: 2rem 1rem;
         }
         
         .activity-card {
@@ -227,7 +272,7 @@
             gap: 5px;
         }
         
-        /* Social Media Icons */
+        /* Social Media Icons in About Section */
         .social-section {
             background: white;
             padding: 2rem;
@@ -602,6 +647,18 @@
                 height: 50px;
                 font-size: 1.5rem;
             }
+            
+            .video-container {
+                height: 50vh;
+            }
+            
+            .video-overlay h2 {
+                font-size: 1.5rem;
+            }
+            
+            .video-overlay p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -651,17 +708,24 @@
         </div>
     </header>
     
+    <!-- Video Section -->
+    <div class="video-container">
+        <video id="charity-video" autoplay muted playsinline loop>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-making-a-donation-41365-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay">
+            <h2>Making a Difference Together</h2>
+            <p>Join us in our mission to create a better world for children and communities in need</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+    
     <!-- Main Content -->
     <div class="container">
         <h1 class="page-title" id="page-heading">Activities by Children</h1>
-        
-        <!-- Video Section -->
-        <div class="video-container" id="promo-video">
-            <video id="charity-video" autoplay muted playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-making-a-donation-41365-large.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
         
         <!-- Home Page -->
         <div id="home-page" class="page-content">
@@ -832,6 +896,33 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Social Media Section in About Page -->
+            <div class="social-section">
+                <h2 class="social-title">Connect With Us</h2>
+                <div class="social-icons">
+                    <a href="https://twitter.com" class="social-icon" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://wa.me/1234567890" class="social-icon" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://youtube.com" class="social-icon" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://facebook.com" class="social-icon" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
         </div>
         
         <!-- Team Page -->
@@ -964,33 +1055,6 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Social Media Section -->
-        <div class="social-section">
-            <h2 class="social-title">Connect With Us</h2>
-            <div class="social-icons">
-                <a href="https://twitter.com" class="social-icon" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
-                </a>
-                <a href="https://instagram.com" class="social-icon" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://wa.me/1234567890" class="social-icon" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="https://youtube.com" class="social-icon" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
-                </a>
-                <a href="https://facebook.com" class="social-icon" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook</span>
-                </a>
-            </div>
-        </div>
     </div>
     
     <!-- Footer -->
@@ -1071,16 +1135,13 @@
             
             // Video scroll behavior
             const video = document.getElementById('charity-video');
-            const videoContainer = document.getElementById('promo-video');
             
             window.addEventListener('scroll', function() {
-                const rect = videoContainer.getBoundingClientRect();
-                
-                // Pause video when it's out of view
-                if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                // Pause video when user scrolls down
+                if (window.scrollY > window.innerHeight * 0.5) {
                     video.pause();
                 } else {
-                    // Play video when it's in view
+                    // Play video when at the top
                     if (video.paused) {
                         video.play();
                     }
