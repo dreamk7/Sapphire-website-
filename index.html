@@ -155,6 +155,21 @@
             color: #2563eb;
         }
         
+        /* Video Section */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -210,6 +225,63 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+        
+        /* Social Media Icons */
+        .social-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-title {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #2563eb;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon i {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            background: #f1f5f9;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            color: #1d4ed8;
+        }
+        
+        .social-icon:hover i {
+            background: #e0e7ff;
+        }
+        
+        .social-icon span {
+            font-size: 0.9rem;
         }
         
         /* Footer */
@@ -356,7 +428,7 @@
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px extremely15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
         
@@ -520,6 +592,16 @@
             .copyright span {
                 text-align: center;
             }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon i {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -572,6 +654,14 @@
     <!-- Main Content -->
     <div class="container">
         <h1 class="page-title" id="page-heading">Activities by Children</h1>
+        
+        <!-- Video Section -->
+        <div class="video-container" id="promo-video">
+            <video id="charity-video" autoplay muted playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-making-a-donation-41365-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         
         <!-- Home Page -->
         <div id="home-page" class="page-content">
@@ -774,7 +864,7 @@
                 
                 <div class="team-member">
                     <div class="team-img">
-                        <img src="https://github.com/dreamk7/Sapphire-website-/issues/1#issue-3411226892" alt="Team member">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team member">
                     </div>
                     <div class="team-content">
                         <h3 class="team-name">Emily Rodriguez</h3>
@@ -791,7 +881,7 @@
             <p>Your support enables us to continue our vital work with children and communities. There are many ways you can help.</p>
             
             <div class="activities-grid">
-                <div class="activity-card">
+                <div class="activity-card" onclick="navigateToJoinPage()" style="cursor: pointer;">
                     <div class="activity-img">
                         <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Donate">
                     </div>
@@ -801,7 +891,7 @@
                     </div>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card" onclick="navigateToJoinPage()" style="cursor: pointer;">
                     <div class="activity-img">
                         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Volunteer">
                     </div>
@@ -811,7 +901,7 @@
                     </div>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card" onclick="navigateToJoinPage()" style="cursor: pointer;">
                     <div class="activity-img">
                         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Partner with us">
                     </div>
@@ -829,7 +919,10 @@
             <p>Become part of our mission to create a better world for children. Fill out the form below and we'll get in touch with you shortly.</p>
             
             <div class="form-container">
-                <form id="join-form">
+                <form id="join-form" action="https://formsubmit.co/el/belana" method="POST">
+                    <input type="hidden" name="_subject" value="New membership request from Sapphire Charity">
+                    <input type="hidden" name="_template" value="table">
+                    
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -846,29 +939,56 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="interest">Area of Interest</label>
+                        <label for="interest">I'm interested in:</label>
                         <select id="interest" name="interest" required>
                             <option value="">Select an option</option>
+                            <option value="donate">Making a donation</option>
                             <option value="volunteer">Volunteering</option>
-                            <option value="donor">Donating</option>
                             <option value="partner">Partnership</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us why you're interested in joining our cause"></textarea>
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message"></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Submit Application</button>
+                    <button type="submit" class="submit-btn">Submit</button>
                 </form>
                 
                 <div class="success-message" id="success-message">
                     <i class="fas fa-check-circle"></i>
-                    <h3>Thank You for Your Interest!</h3>
-                    <p>We've received your information and will contact you shortly.</p>
+                    <h3>Thank You!</h3>
+                    <p>Your form has been submitted successfully. We'll be in touch soon.</p>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Social Media Section -->
+        <div class="social-section">
+            <h2 class="social-title">Connect With Us</h2>
+            <div class="social-icons">
+                <a href="https://twitter.com" class="social-icon" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://instagram.com" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://wa.me/1234567890" class="social-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://youtube.com" class="social-icon" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://facebook.com" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
             </div>
         </div>
     </div>
@@ -877,115 +997,94 @@
     <footer>
         <div class="footer-light"></div>
         <div class="footer-content">
-            <p>Making a difference in the lives of children and communities</p>
+            <p>SAPPHIRE CHARITY ORGANIZATION</p>
             <div class="copyright">
                 <span>&copy; 2023 Sapphire Charity Organization. All rights reserved.</span>
-                <span>Email us at: <a href="mailto:info@sapphirecharity.org" style="color: #ff9e40;">info@sapphirecharity.org</a></span>
+                <span>|</span>
+                <span><a href="#" style="color: white;">Privacy Policy</a></span>
+                <span>|</span>
+                <span><a href="#" style="color: white;">Terms of Service</a></span>
             </div>
         </div>
     </footer>
-
+    
     <script>
         // Navigation functionality
-        document.querySelectorAll('.icon, .join-btn').forEach(item => {
-            item.addEventListener('click', function() {
-                const pageId = this.getAttribute('data-page');
-                const pageTitle = this.getAttribute('data-title');
-                
-                if (pageId) {
-                    // Hide all pages
-                    document.querySelectorAll('.page-content').forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    
-                    // Show the selected page
-                    document.getElementById(pageId).style.display = 'block';
-                    
-                    // Update page title
-                    if (pageTitle) {
-                        document.getElementById('page-heading').textContent = pageTitle;
-                    }
-                    
-                    // Close mobile menu if open
-                    document.getElementById('nav-icons').classList.remove('active');
-                    document.getElementById('hamburger-menu').classList.remove('active');
-                }
-            });
-        });
-        
-        // Home navigation
-        function navigateToHome() {
+        function navigateToPage(pageId, title) {
             document.querySelectorAll('.page-content').forEach(page => {
                 page.style.display = 'none';
             });
-            document.getElementById('home-page').style.display = 'block';
-            document.getElementById('page-heading').textContent = 'Activities by Children';
+            
+            document.getElementById(pageId).style.display = 'block';
+            document.getElementById('page-heading').textContent = title;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             
             // Close mobile menu if open
             document.getElementById('nav-icons').classList.remove('active');
             document.getElementById('hamburger-menu').classList.remove('active');
         }
         
-        // Hamburger menu functionality
-        document.getElementById('hamburger-menu').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.getElementById('nav-icons').classList.toggle('active');
-        });
+        function navigateToHome() {
+            navigateToPage('home-page', 'Activities by Children');
+        }
         
-        // Team member toggle
-        document.querySelectorAll('.team-member').forEach(member => {
-            member.addEventListener('click', function() {
-                this.classList.toggle('active');
+        function navigateToJoinPage() {
+            navigateToPage('join-page', 'Join Our Community');
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up navigation icons
+            document.querySelectorAll('.icon, .join-btn').forEach(item => {
+                if (item.dataset.page) {
+                    item.addEventListener('click', () => {
+                        navigateToPage(item.dataset.page, item.dataset.title);
+                    });
+                }
             });
-        });
-        
-        // Form submission
-        document.getElementById('join-form').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            // Set up team member cards
+            document.querySelectorAll('.team-member').forEach(member => {
+                member.addEventListener('click', () => {
+                    member.classList.toggle('active');
+                });
+            });
             
-            // Show loading state
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
+            // Set up hamburger menu
+            document.getElementById('hamburger-menu').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.getElementById('nav-icons').classList.toggle('active');
+            });
             
-            // Send data to FormSubmit using fetch API
-            fetch('https://formsubmit.co/ajax/sapphire02.org@gmail.com', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    interest: data.interest,
-                    message: data.message,
-                    _subject: 'New membership request from Sapphire Charity'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Hide form and show success message
-                this.style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
+            // Set up form submission
+            document.getElementById('join-form').addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Reset form
-                this.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                // Simulate form submission
+                setTimeout(() => {
+                    this.style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }, 1000);
+            });
+            
+            // Video scroll behavior
+            const video = document.getElementById('charity-video');
+            const videoContainer = document.getElementById('promo-video');
+            
+            window.addEventListener('scroll', function() {
+                const rect = videoContainer.getBoundingClientRect();
+                
+                // Pause video when it's out of view
+                if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                    video.pause();
+                } else {
+                    // Play video when it's in view
+                    if (video.paused) {
+                        video.play();
+                    }
+                }
             });
         });
     </script>
