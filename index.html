@@ -296,37 +296,43 @@
         
         .social-icon {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #2563eb;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon i {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            background: #f1f5f9;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
             transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .social-icon.twitter {
+            color: #1DA1F2;
+            background: rgba(29, 161, 242, 0.1);
+        }
+        
+        .social-icon.instagram {
+            color: #E1306C;
+            background: rgba(225, 48, 108, 0.1);
+        }
+        
+        .social-icon.whatsapp {
+            color: #25D366;
+            background: rgba(37, 211, 102, 0.1);
+        }
+        
+        .social-icon.youtube {
+            color: #FF0000;
+            background: rgba(255, 0, 0, 0.1);
+        }
+        
+        .social-icon.facebook {
+            color: #4267B2;
+            background: rgba(66, 103, 178, 0.1);
         }
         
         .social-icon:hover {
             transform: translateY(-5px);
-            color: #1d4ed8;
-        }
-        
-        .social-icon:hover i {
-            background: #e0e7ff;
-        }
-        
-        .social-icon span {
-            font-size: 0.9rem;
         }
         
         /* Footer */
@@ -642,10 +648,10 @@
                 gap: 15px;
             }
             
-            .social-icon i {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
             
             .video-container {
@@ -708,14 +714,14 @@
         </div>
     </header>
     
-    <!-- Video Section -->
-    <div class="video-container">
+    <!-- Video Section (Only on Home Page) -->
+    <div id="home-video-section" class="video-container">
         <video id="charity-video" autoplay muted playsinline loop>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-making-a-donation-41365-large.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-kids-having-a-workshop-41301-large.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="video-overlay">
-            <h2>Making a Difference Together</h2>
+            <h2>Making a Difference in Children's Lives</h2>
             <p>Join us in our mission to create a better world for children and communities in need</p>
         </div>
         <div class="scroll-indicator">
@@ -832,7 +838,7 @@
             <div class="activities-grid">
                 <div class="activity-card">
                     <div class="activity-img">
-                        <img src="https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Charity event">
+                        <img src="https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=c crop&w=600&q=80" alt="Charity event">
                     </div>
                     <div class="activity-content">
                         <h3 class="activity-title">Annual Fundraising Gala</h3>
@@ -901,25 +907,20 @@
             <div class="social-section">
                 <h2 class="social-title">Connect With Us</h2>
                 <div class="social-icons">
-                    <a href="https://twitter.com" class="social-icon" target="_blank">
+                    <a href="https://twitter.com/sapphirecharity" class="social-icon twitter" target="_blank">
                         <i class="fab fa-twitter"></i>
-                        <span>Twitter</span>
                     </a>
-                    <a href="https://instagram.com" class="social-icon" target="_blank">
+                    <a href="https://instagram.com/sapphirecharity" class="social-icon instagram" target="_blank">
                         <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
                     </a>
-                    <a href="https://wa.me/1234567890" class="social-icon" target="_blank">
+                    <a href="https://wa.me/1234567890" class="social-icon whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp</span>
                     </a>
-                    <a href="https://youtube.com" class="social-icon" target="_blank">
+                    <a href="https://youtube.com/sapphirecharity" class="social-icon youtube" target="_blank">
                         <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
                     </a>
-                    <a href="https://facebook.com" class="social-icon" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                        <span>Facebook</span>
+                    <a href="https://facebook.com/sapphirecharity" class="social-icon facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
                 </div>
             </div>
@@ -1010,7 +1011,7 @@
             <p>Become part of our mission to create a better world for children. Fill out the form below and we'll get in touch with you shortly.</p>
             
             <div class="form-container">
-                <form id="join-form" action="https://formsubmit.co/el/belana" method="POST">
+                <form id="join-form" action="https://formsubmit.co/sapphire02.org@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="New membership request from Sapphire Charity">
                     <input type="hidden" name="_template" value="table">
                     
@@ -1061,13 +1062,9 @@
     <footer>
         <div class="footer-light"></div>
         <div class="footer-content">
-            <p>SAPPHIRE CHARITY ORGANIZATION</p>
+            <p>Email: <a href="mailto:sapphire02.org@gmail.com" style="color: #ff9e40;">sapphire02.org@gmail.com</a></p>
             <div class="copyright">
-                <span>&copy; 2023 Sapphire Charity Organization. All rights reserved.</span>
-                <span>|</span>
-                <span><a href="#" style="color: white;">Privacy Policy</a></span>
-                <span>|</span>
-                <span><a href="#" style="color: white;">Terms of Service</a></span>
+                <span>&copy; 2023 Sapphire Charity Organization</span>
             </div>
         </div>
     </footer>
@@ -1078,6 +1075,13 @@
             document.querySelectorAll('.page-content').forEach(page => {
                 page.style.display = 'none';
             });
+            
+            // Hide video when navigating away from home
+            if (pageId === 'home-page') {
+                document.getElementById('home-video-section').style.display = 'block';
+            } else {
+                document.getElementById('home-video-section').style.display = 'none';
+            }
             
             document.getElementById(pageId).style.display = 'block';
             document.getElementById('page-heading').textContent = title;
