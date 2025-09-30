@@ -85,6 +85,15 @@
             transform: translateY(-3px);
         }
         
+        .icon.active {
+            color: #ff9e40;
+            transform: translateY(-3px);
+        }
+        
+        .icon.active i {
+            color: #ff9e40;
+        }
+        
         .icon-text {
             font-size: 0.8rem;
         }
@@ -162,6 +171,7 @@
             height: 70vh;
             position: relative;
             overflow: hidden;
+            background: #000;
         }
         
         .video-container video {
@@ -661,7 +671,7 @@
         </div>
         
         <div class="nav-icons" id="nav-icons">
-            <div class="icon home-icon" onclick="navigateToHome()">
+            <div class="icon home-icon active" onclick="navigateToHome()">
                 <i class="fas fa-home"></i>
                 <span class="icon-text">Home</span>
             </div>
@@ -696,6 +706,7 @@
     <div id="home-video-section" class="video-container">
         <video id="charity-video" autoplay muted playsinline loop>
             <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-hugging-and-having-fun-41302-large.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-child-coloring-a-drawing-41303-large.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="video-overlay">
@@ -1049,7 +1060,17 @@
     
     <script>
         // Navigation functionality
-        function navigateToPage(pageId, title) {
+        function navigateToPage(pageId, title, clickedIcon) {
+            // Remove active class from all icons
+            document.querySelectorAll('.icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            
+            // Add active class to clicked icon
+            if (clickedIcon) {
+                clickedIcon.classList.add('active');
+            }
+            
             document.querySelectorAll('.page-content').forEach(page => {
                 page.style.display = 'none';
             });
@@ -1073,7 +1094,7 @@
         }
         
         function navigateToHome() {
-            navigateToPage('home-page', 'Activities by Children');
+            navigateToPage('home-page', 'Activities by Children', document.querySelector('.home-icon'));
         }
         
         function navigateToJoinPage() {
@@ -1085,8 +1106,8 @@
             // Set up navigation icons
             document.querySelectorAll('.icon, .join-btn').forEach(item => {
                 if (item.dataset.page) {
-                    item.addEventListener('click', () => {
-                        navigateToPage(item.dataset.page, item.dataset.title);
+                    item.addEventListener('click', function() {
+                        navigateToPage(this.dataset.page, this.dataset.title, this);
                     });
                 }
             });
@@ -1139,14 +1160,24 @@
             // Ensure video plays and loops
             const video = document.getElementById('charity-video');
             video.loop = true;
-            video.play();
             
-            // If video fails to load, try an alternative source
-            video.addEventListener('error', function() {
-                console.log('Video failed to load, trying alternative source');
-                video.innerHTML = '<source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-holding-a-red-heart-41367-large.mp4" type="video/mp4">';
-                video.load();
-                video.play();
+            // Force video to play
+            video.play().catch(error => {
+                console.log('Video autoplay failed:', error);
+                // Add a play button overlay if autoplay fails
+                const playButton = document.createElement('div');
+                playButton.innerHTML = '<i class="fas fa-play" style="font-size: 3rem; color: white;"></i>';
+                playButton.style.position = 'absolute';
+                playButton.style.top = '50%';
+                playButton.style.left = '50%';
+                playButton.style.transform = 'translate(-50%, -50%)';
+                playButton.style.cursor = 'pointer';
+                playButton.style.zIndex = '10';
+                playButton.addEventListener('click', function() {
+                    video.play();
+                    this.style.display = 'none';
+                });
+                document.querySelector('.video-container').appendChild(playButton);
             });
         });
     </script>
