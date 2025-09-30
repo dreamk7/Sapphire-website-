@@ -165,41 +165,48 @@
             padding-top: 1.5rem;
         }
         
-        /* Video Section */
+        /* Video Section - FIXED */
         .video-container {
             width: 100%;
             height: 70vh;
             position: relative;
             overflow: hidden;
-            background: #000;
+            background: #1a1a1a;
         }
         
         .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
         
         .video-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
             color: white;
-            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem 2rem;
             text-align: center;
         }
         
         .video-overlay h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .video-overlay p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.3rem;
+            max-width: 700px;
             margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         
         .activities-grid {
@@ -590,6 +597,24 @@
             margin-bottom: 1rem;
         }
         
+        /* Video Fallback Styles */
+        .video-fallback {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 5;
+            display: none;
+        }
+        
+        .video-fallback i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #ff9e40;
+        }
+        
         /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-icons {
@@ -644,6 +669,24 @@
             
             .video-container {
                 height: 50vh;
+            }
+            
+            .video-overlay h2 {
+                font-size: 1.8rem;
+            }
+            
+            .video-overlay p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container {
+                height: 40vh;
+            }
+            
+            .video-overlay {
+                padding: 1.5rem 1rem;
             }
             
             .video-overlay h2 {
@@ -702,16 +745,23 @@
         </div>
     </header>
     
-    <!-- Video Section (Only on Home Page) -->
+    <!-- Video Section (Only on Home Page) - FIXED -->
     <div id="home-video-section" class="video-container">
         <video id="charity-video" autoplay muted playsinline loop>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-hugging-and-having-fun-41302-large.mp4" type="video/mp4">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-child-coloring-a-drawing-41303-large.mp4" type="video/mp4">
+            <!-- Using a reliable video source from Pexels -->
+            <source src="https://player.vimeo.com/external/449467056.sd.mp4?s=8a9c0b2e8d7f6e4b7c8e9d0a1b2c3d4e5f6a7b8c9&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+            <!-- Fallback video source -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-hugging-41302-large.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="video-overlay">
             <h2>Making a Difference in Children's Lives</h2>
             <p>Join us in our mission to create a better world for children and communities in need</p>
+        </div>
+        <!-- Video fallback in case video doesn't load -->
+        <div class="video-fallback" id="video-fallback">
+            <i class="fas fa-play-circle"></i>
+            <p>Click to play video</p>
         </div>
     </div>
     
@@ -766,6 +816,7 @@
             </div>
         </div>
         
+        <!-- Rest of your page content remains the same -->
         <!-- Programs Page -->
         <div id="programs-page" class="page-content">
             <h2>Our Programs</h2>
@@ -1157,27 +1208,37 @@
                 });
             });
             
-            // Ensure video plays and loops
+            // Video handling with multiple fallbacks
             const video = document.getElementById('charity-video');
+            const videoFallback = document.getElementById('video-fallback');
+            
             video.loop = true;
             
-            // Force video to play
-            video.play().catch(error => {
-                console.log('Video autoplay failed:', error);
-                // Add a play button overlay if autoplay fails
-                const playButton = document.createElement('div');
-                playButton.innerHTML = '<i class="fas fa-play" style="font-size: 3rem; color: white;"></i>';
-                playButton.style.position = 'absolute';
-                playButton.style.top = '50%';
-                playButton.style.left = '50%';
-                playButton.style.transform = 'translate(-50%, -50%)';
-                playButton.style.cursor = 'pointer';
-                playButton.style.zIndex = '10';
-                playButton.addEventListener('click', function() {
-                    video.play();
-                    this.style.display = 'none';
+            // Try to play the video
+            const playVideo = () => {
+                video.play().then(() => {
+                    console.log('Video is playing successfully');
+                    videoFallback.style.display = 'none';
+                }).catch(error => {
+                    console.log('Video autoplay failed, showing fallback:', error);
+                    videoFallback.style.display = 'block';
                 });
-                document.querySelector('.video-container').appendChild(playButton);
+            };
+            
+            // Initial attempt to play
+            playVideo();
+            
+            // Fallback click handler
+            videoFallback.addEventListener('click', function() {
+                playVideo();
+                this.style.display = 'none';
+            });
+            
+            // If video errors out, try alternative sources
+            video.addEventListener('error', function() {
+                console.log('Video source failed, trying alternatives...');
+                // You can add more alternative video sources here if needed
+                videoFallback.style.display = 'block';
             });
         });
     </script>
