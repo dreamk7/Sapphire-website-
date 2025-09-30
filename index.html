@@ -1063,6 +1063,7 @@
                     <input type="hidden" name="_subject" value="New membership request from Sapphire Charity">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="">
                     
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -1200,18 +1201,65 @@
             
             // Set up form submission
             document.getElementById('join-form').addEventListener('submit', function(e) {
-                // Form will submit to FormSubmit.co which will send the email
-                // Show success message after submission
+                // Show success message
+                e.preventDefault();
+                this.style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Actually submit the form in the background
                 setTimeout(() => {
-                    this.style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
-                }, 500);
+                    // Create a temporary form to submit
+                    const tempForm = document.createElement('form');
+                    tempForm.method = 'POST';
+                    tempForm.action = 'https://formsubmit.co/sapphire02.org@gmail.com';
+                    
+                    // Add all form data
+                    const formData = new FormData(this);
+                    for (const [key, value] of formData.entries()) {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        tempForm.appendChild(input);
+                    }
+                    
+                    // Add hidden fields
+                    const subject = document.createElement('input');
+                    subject.type = 'hidden';
+                    subject.name = '_subject';
+                    subject.value = 'New membership request from Sapphire Charity';
+                    tempForm.appendChild(subject);
+                    
+                    const template = document.createElement('input');
+                    template.type = 'hidden';
+                    template.name = '_template';
+                    template.value = 'table';
+                    tempForm.appendChild(template);
+                    
+                    const captcha = document.createElement('input');
+                    captcha.type = 'hidden';
+                    captcha.name = '_captcha';
+                    captcha.value = 'false';
+                    tempForm.appendChild(captcha);
+                    
+                    // Submit the form
+                    document.body.appendChild(tempForm);
+                    tempForm.submit();
+                }, 1000);
             });
             
             // Ensure video plays and loops
             const video = document.getElementById('charity-video');
             video.loop = true;
             video.play();
+            
+            // If video fails to load, try an alternative source
+            video.addEventListener('error', function() {
+                console.log('Video failed to load, trying alternative source');
+                video.innerHTML = '<source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-holding-a-red-heart-41367-large.mp4" type="video/mp4">';
+                video.load();
+                video.play();
+            });
         });
     </script>
 </body>
