@@ -751,8 +751,15 @@
     <!-- Video Section (Only on Home Page) - FIXED -->
     <div id="home-video-section" class="video-container">
         <video id="charity-video" autoplay muted playsinline loop>
-            <!-- Using a reliable video source from Pexels -->
-            <source src="https://player.vimeo.com/external/449467056.sd.mp4?s=8a9c0b2e8d7f6e4b7c8e9d0a1b2c3d4e5f6a7b8c9&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+           <!-- Alternative: YouTube iframe embed -->
+<div id="home-video-section" class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/EG--RrGFiSs?autoplay=1&mute=1&loop=1&playlist=EG--RrGFiSs&controls=0&modestbranding=1&rel=0" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
             <!-- Fallback video source -->
             <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-hugging-41302-large.mp4" type="video/mp4">
             Your browser does not support the video tag.
