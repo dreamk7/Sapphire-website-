@@ -6,9 +6,270 @@
     <title>SAPPHIRE KIDS ORGANIZATION | Nurturing Tomorrow's Leaders</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* All previous CSS remains the same until the mission section */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
-        /* Mission Section with Background Images - MODIFIED */
+        :root {
+            --primary: #2563eb;
+            --secondary: #1d4ed8;
+            --accent: #ff9e40;
+            --light: #f8f9fa;
+            --dark: #333;
+            --text: #333;
+            --success: #10b981;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .icon i {
+            font-size: 1.5rem;
+        }
+        
+        .icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .icon.active {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .icon.active i {
+            color: var(--accent);
+        }
+        
+        .icon-text {
+            font-size: 0.8rem;
+        }
+        
+        .home-icon {
+            color: var(--accent);
+        }
+        
+        .join-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .join-btn:hover {
+            background-color: #ff7e1c;
+            transform: scale(1.05);
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+        
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        /* Hero Section with Dynamic Background */
+        .hero {
+            color: white;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide-1 {
+            background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(29, 78, 216, 0.9)), url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+        }
+        
+        .hero-slide-2 {
+            background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(29, 78, 216, 0.9)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+        }
+        
+        .hero-slide-3 {
+            background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(29, 78, 216, 0.9)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 158, 64, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ff7e1c;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Mission Section with Background Images */
         .mission {
             padding: 6rem 2rem;
             background-color: white;
@@ -112,7 +373,126 @@
             background: url('https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
         
-        /* Team Section - MODIFIED */
+        /* Photo Gallery Section */
+        .gallery-section {
+            padding: 6rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-slideshow {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .gallery-desc {
+            color: #666;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 6rem 2rem;
+            background-color: white;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card:hover .program-img img {
+            transform: scale(1.05);
+        }
+        
+        .program-content {
+            padding: 1.5rem;
+        }
+        
+        .program-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .program-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        /* Team Section */
         .team {
             padding: 6rem 2rem;
             background-color: var(--light);
@@ -143,18 +523,12 @@
         .team-img {
             height: 200px;
             overflow: hidden;
-            position: relative;
         }
         
         .team-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .team-member:hover .team-img img {
-            transform: scale(1.05);
         }
         
         .team-content {
@@ -186,15 +560,390 @@
             margin-top: 1rem;
         }
         
-        /* Rest of the CSS remains the same */
+        /* Impact Section */
+        .impact {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .impact .section-title h2 {
+            color: white;
+        }
+        
+        .impact .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .impact-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+        }
+        
+        /* Support Section with Background Image */
+        .support {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .support::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+        
+        .support::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.9);
+            z-index: -1;
+        }
+        
+        .support .section-title h2 {
+            color: white;
+        }
+        
+        .support .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .support-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+            background: white;
+        }
+        
+        .support-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .support-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Join Section */
+        .join {
+            padding: 6rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            background: #f0fff0;
+            border-radius: 10px;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-message i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer - Reduced Size */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-light {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            animation: lightMove 5s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes lightMove {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .social-icon.twitter {
+            background: #1DA1F2;
+        }
+        
+        .social-icon.instagram {
+            background: #E1306C;
+        }
+        
+        .social-icon.whatsapp {
+            background: #25D366;
+        }
+        
+        .social-icon.youtube {
+            background: #FF0000;
+        }
+        
+        .social-icon.facebook {
+            background: #4267B2;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            opacity: 0.9;
+        }
+        
+        .copyright {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         
         /* Responsive Styles */
         @media (max-width: 768px) {
-            /* All previous responsive styles remain the same */
+            .nav-icons {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 99;
+            }
+            
+            .nav-icons.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .mission-cards,
+            .programs-grid,
+            .support-options,
+            .team-grid,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-stats {
+                gap: 2rem;
+            }
+            
+            .stat {
+                min-width: 150px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 480px) {
-            /* All previous responsive styles remain the same */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .stat-label {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -256,7 +1005,7 @@
         
         <div class="hero-content">
             <h1>Empowering Children, Building Futures</h1>
-            <p>We help kids learn, grow talents, and build strong faith. Every child deserves a bright future.</p>
+            <p>At Sapphire Kids Organization, we're dedicated to transforming children's lives through education, talent development, and spiritual guidance. We're building a future where every child can thrive and fulfill their God-given potential.</p>
             <div class="hero-buttons">
                 <a href="#support" class="btn-primary">Support Our Mission</a>
                 <a href="#join" class="btn-secondary">Join Our Community</a>
@@ -264,30 +1013,30 @@
         </div>
     </section>
     
-    <!-- Mission Section - MODIFIED -->
+    <!-- Mission Section -->
     <section id="mission" class="mission">
         <div class="section-title">
             <h2>Our Holistic Approach</h2>
-            <p>We help children grow in mind, body, and spirit to become tomorrow's leaders</p>
+            <p>We believe in nurturing the whole child - mind, body, and spirit - to create tomorrow's leaders</p>
         </div>
         
         <div class="mission-cards">
             <div class="mission-card education-card">
                 <i class="fas fa-book-open"></i>
                 <h3>Quality Education</h3>
-                <p>We give kids school supplies and tutoring for success.</p>
+                <p>We provide access to quality education, school supplies, and tutoring to ensure every child has the foundation for success.</p>
             </div>
             
             <div class="mission-card talent-card">
                 <i class="fas fa-palette"></i>
                 <h3>Talent Development</h3>
-                <p>We help children discover their gifts in arts, sports, and leadership.</p>
+                <p>We identify and nurture each child's unique God-given talents in arts, sports, leadership, and innovation.</p>
             </div>
             
             <div class="mission-card spiritual-card">
                 <i class="fas fa-pray"></i>
                 <h3>Spiritual Foundation</h3>
-                <p>We teach kids about God's love in a caring environment.</p>
+                <p>We provide a loving, Christ-centered environment where children learn to know and praise God in all they do.</p>
             </div>
         </div>
     </section>
@@ -380,11 +1129,11 @@
         </div>
     </section>
     
-    <!-- Team Section - MODIFIED -->
+    <!-- Team Section -->
     <section id="team" class="team">
         <div class="section-title">
             <h2>Meet Our Team</h2>
-            <p>The dedicated people who make our work possible</p>
+            <p>The dedicated individuals who make our work possible</p>
         </div>
         
         <div class="team-grid">
@@ -395,7 +1144,7 @@
                 <div class="team-content">
                     <h3 class="team-name">NAMUGABE SARAH</h3>
                     <p class="team-role">Executive Director</p>
-                    <p class="team-desc">Sarah leads our organization with 15 years of experience. She has expanded our programs to 5 new communities and increased our impact by 200%.</p>
+                    <p class="team-desc">With over 15 years of experience in nonprofit management, Sarah leads our organization with passion and dedication. She has successfully overseen the expansion of our programs to 5 new communities and increased our impact by 200% over the last 3 years.</p>
                 </div>
             </div>
             
@@ -406,7 +1155,7 @@
                 <div class="team-content">
                     <h3 class="team-name">DREAM KING</h3>
                     <p class="team-role">Program Director</p>
-                    <p class="team-desc">Dream designs our community programs. He created our talent system that helped 200+ children discover their gifts.</p>
+                    <p class="team-desc">Dream designs and implements our community programs with a focus on sustainability and impact measurement. He has developed our talent identification system that has helped over 200 children discover their unique gifts and abilities.</p>
                 </div>
             </div>
             
@@ -417,7 +1166,7 @@
                 <div class="team-content">
                     <h3 class="team-name">Emily Rodriguez</h3>
                     <p class="team-role">Community Outreach Coordinator</p>
-                    <p class="team-desc">Emily connects with communities and builds partnerships. She works with 15 local schools and churches to help 500+ children yearly.</p>
+                    <p class="team-desc">Emily builds relationships with local communities and ensures our programs meet their specific needs. She has successfully established partnerships with 15 local schools and churches, expanding our reach to over 500 children annually.</p>
                 </div>
             </div>
         </div>
@@ -544,7 +1293,7 @@
         </div>
     </section>
     
-    <!-- Footer - MODIFIED Twitter handle -->
+    <!-- Footer -->
     <footer>
         <div class="footer-light"></div>
         <div class="footer-content">
