@@ -492,7 +492,7 @@
             margin-bottom: 1rem;
         }
         
-        /* Team Section */
+        /* Team Section - Fixed */
         .team {
             padding: 6rem 2rem;
             background-color: var(--light);
@@ -514,6 +514,10 @@
             transition: transform 0.3s ease;
             text-align: center;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
         }
         
         .team-member:hover {
@@ -521,23 +525,27 @@
         }
         
         .team-img {
-           width: 100px;
-           height: 100px;
-           object-fit: cover;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--primary);
         }
         
         .team-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
         
         .team-content {
-            padding: 1.5rem;
+            text-align: center;
         }
         
         .team-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
@@ -1130,7 +1138,7 @@
         </div>
     </section>
     
-    <!-- Team Section -->
+    <!-- Team Section - Fixed -->
     <section id="team" class="team">
         <div class="section-title">
             <h2>Meet Our Team</h2>
