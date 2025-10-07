@@ -747,45 +747,32 @@
             margin-bottom: 1rem;
         }
         
-        /* Footer - Reduced Size */
-        footer {
+        /* Connect With Us Section - NEW */
+        .connect-section {
+            padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
-            padding: 2rem 1rem 1rem;
-            position: relative;
-            overflow: hidden;
         }
         
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .connect-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .footer-light {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.3) 50%, 
-                transparent 100%);
-            animation: lightMove 5s infinite linear;
-            pointer-events: none;
+        .connect-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
         }
         
-        @keyframes lightMove {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
+        .connect-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .social-icons {
@@ -802,10 +789,10 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: white;
         }
         
@@ -813,8 +800,12 @@
             background: #1DA1F2;
         }
         
+        .social-icon.tiktok {
+            background: #000000;
+        }
+        
         .social-icon.instagram {
-            background: #E1306C;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
         
         .social-icon.whatsapp {
@@ -826,12 +817,37 @@
         }
         
         .social-icon.facebook {
-            background: #4267B2;
+            background: #1877F2;
         }
         
         .social-icon:hover {
-            transform: translateY(-5px);
-            opacity: 0.9;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .email-link {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .email-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .email-link a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Footer - Clean Version */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
         }
         
         .copyright {
@@ -839,7 +855,6 @@
             justify-content: center;
             align-items: center;
             gap: 5px;
-            margin-top: 1rem;
             font-size: 0.9rem;
             flex-wrap: wrap;
         }
@@ -915,6 +930,14 @@
             .stat-number {
                 font-size: 2.5rem;
             }
+            
+            .connect-title {
+                font-size: 1.8rem;
+            }
+            
+            .connect-subtitle {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -936,6 +959,12 @@
             
             .stat-label {
                 font-size: 1rem;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -1286,32 +1315,43 @@
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer>
-        <div class="footer-light"></div>
-        <div class="footer-content">
-            <h3>Connect With Us</h3>
+    <!-- Connect With Us Section - NEW -->
+    <section class="connect-section">
+        <div class="connect-content">
+            <h2 class="connect-title">Connect With Us</h2>
+            <p class="connect-subtitle">Stay updated with our latest activities, events, and impact stories through our social media channels</p>
+            
             <div class="social-icons">
-                <a href="https://twitter.com/sapphirekidsorg" class="social-icon twitter" target="_blank">
-                    <i class="fab fa-twitter"></i>
+                <a href="https://tiktok.com/@sapphire02.org" class="social-icon tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="https://instagram.com/sapphirekidsorg" class="social-icon instagram" target="_blank">
+                <a href="https://x.com/sapphire02.org" class="social-icon twitter" target="_blank">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://instagram.com/sapphire02.org" class="social-icon instagram" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/1234567890" class="social-icon whatsapp" target="_blank">
+                <a href="https://wa.me/sapphire02.org" class="social-icon whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://youtube.com/sapphirekidsorg" class="social-icon youtube" target="_blank">
+                <a href="https://youtube.com/sapphire02.org" class="social-icon youtube" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="https://facebook.com/sapphirekidsorg" class="social-icon facebook" target="_blank">
+                <a href="https://facebook.com/sapphire02.org" class="social-icon facebook" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
-            <p>Email: <a href="mailto:sapphire02.org@gmail.com" style="color: #ff9e40;">sapphire02.org@gmail.com</a></p>
-            <div class="copyright">
-                <span>&copy; <span id="current-year">2023</span> Sapphire Kids Organization</span>
+            
+            <div class="email-link">
+                <p>Email: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
             </div>
+        </div>
+    </section>
+    
+    <!-- Footer - Clean Version -->
+    <footer>
+        <div class="copyright">
+            <span>&copy; <span id="current-year">2023</span> Sapphire Kids Organization. All rights reserved.</span>
         </div>
     </footer>
     
