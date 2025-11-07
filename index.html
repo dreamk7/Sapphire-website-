@@ -746,19 +746,23 @@
         
         /* Connect With Us Section - NEW */
         .connect-section {
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .connect-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .connect-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: white;
         }
@@ -775,9 +779,9 @@
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
         
         .social-icon {
@@ -786,11 +790,12 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             font-size: 1.5rem;
             color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
         .social-icon.twitter {
@@ -819,12 +824,12 @@
         
         .social-icon:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
         .email-link {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
+            margin-top: 2rem;
+            font-size: 1.2rem;
         }
         
         .email-link a {
@@ -832,11 +837,14 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .email-link a:hover {
             color: white;
-            text-decoration: underline;
+            background: rgba(255, 255, 255, 0.2);
         }
         
         /* Footer - Clean Version */
@@ -955,11 +963,17 @@
             }
             
             .connect-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .connect-subtitle {
                 font-size: 1rem;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
             }
         }
 
@@ -985,9 +999,9 @@
             }
             
             .social-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1180,7 +1194,7 @@
         <div class="team-grid">
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/team1.jpg" alt="Team Member">
+                    <img src="abscess.jpg" alt="Team Member">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">Sarah Johnson</h3>
@@ -1191,7 +1205,7 @@
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/team2.jpg" alt="Team Member">
+                    <img src="abscess.jpg" alt="Team Member">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">Michael Rodriguez</h3>
@@ -1202,7 +1216,7 @@
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/team3.jpg" alt="Team Member">
+                    <img src="abscess.jpg" alt="Team Member">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">Emily Chen</h3>
@@ -1341,28 +1355,28 @@
             <p class="connect-subtitle">Stay updated on our programs, events, and the impact we're making in children's lives</p>
             
             <div class="social-icons">
-                <a href="https://sapphire02.org" class="social-icon tiktok" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://sapphire02.org" class="social-icon twitter" target="_blank">
+                <a href="https://x.com/sapphirekids" class="social-icon twitter" target="_blank">
                     <i class="fab fa-x-twitter"></i>
                 </a>
-                <a href="https://sapphire02.org" class="social-icon instagram" target="_blank">
+                <a href="https://tiktok.com/@sapphirekids" class="social-icon tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://instagram.com/sapphirekids" class="social-icon instagram" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://sapphire02.org" class="social-icon whatsapp" target="_blank">
+                <a href="https://wa.me/1234567890" class="social-icon whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://sapphire02.org" class="social-icon youtube" target="_blank">
+                <a href="https://youtube.com/sapphirekids" class="social-icon youtube" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="https://sapphire02.org" class="social-icon facebook" target="_blank">
+                <a href="https://facebook.com/sapphirekids" class="social-icon facebook" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
             
             <div class="email-link">
-                <p>Email: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
+                <p>Email us at: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
             </div>
         </div>
     </section>
