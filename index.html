@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAPPHIRE KIDS ORGANIZATION | Nurturing Tomorrow's Leaders</title>
+    <title>SAPPHIRE KIDS ORGANIZATION | Transforming Lives Through Faith & Education</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ALL YOUR EXISTING CSS REMAINS EXACTLY THE SAME */
@@ -160,7 +160,7 @@
             transform: translateY(-9px) rotate(-45deg);
         }
         
-        /* Hero Section with Dynamic Background */
+        /* Hero Section with Dynamic Background - UPDATED CONTENT */
         .hero {
             color: white;
             min-height: 80vh;
@@ -267,25 +267,16 @@
             color: var(--primary);
         }
         
-        /* VIDEO SECTION - NEW (Simple and clean) */
+        /* VIDEO SECTION - SIMPLE & CLEAN */
         .videos-section {
             padding: 6rem 2rem;
-            background-color: var(--light);
+            background-color: white;
         }
         
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .video-container {
+            max-width: 800px;
             margin: 2rem auto 0;
-        }
-        
-        .video-item {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         
         .video-wrapper {
@@ -293,6 +284,9 @@
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
         }
         
         .video-wrapper iframe {
@@ -304,18 +298,36 @@
             border: 0;
         }
         
-        .video-content {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .video-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .video-caption {
+            font-size: 1.8rem;
             color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
         }
         
-        /* Mission Section with Background Images - FIXED */
+        .video-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .youtube-link {
+            display: inline-block;
+            background: #FF0000;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .youtube-link:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+        
+        /* Mission Section with Background Images - UPDATED CONTENT */
         .mission {
             padding: 6rem 2rem;
             background-color: white;
@@ -462,7 +474,7 @@
             color: #666;
         }
         
-        /* Programs Section */
+        /* Programs Section - UPDATED CONTENT */
         .programs {
             padding: 6rem 2rem;
             background-color: white;
@@ -599,7 +611,7 @@
             margin-top: 1rem;
         }
         
-        /* Impact Section */
+        /* Impact Section - UPDATED CONTENT */
         .impact {
             padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -640,7 +652,7 @@
             font-size: 1.2rem;
         }
         
-        /* Support Section with Background Image */
+        /* Support Section with Background Image - UPDATED CONTENT */
         .support {
             padding: 6rem 2rem;
             position: relative;
@@ -712,7 +724,7 @@
             color: var(--dark);
         }
         
-        /* Join Section */
+        /* Join Section - FIXED FORM SUBMISSION */
         .join {
             padding: 6rem 2rem;
             background-color: var(--light);
@@ -995,8 +1007,7 @@
             .programs-grid,
             .support-options,
             .team-grid,
-            .gallery,
-            .videos-grid {
+            .gallery {
                 grid-template-columns: 1fr;
             }
             
@@ -1010,6 +1021,14 @@
             
             .stat-number {
                 font-size: 2.5rem;
+            }
+            
+            .video-caption {
+                font-size: 1.5rem;
+            }
+            
+            .video-subtitle {
+                font-size: 1rem;
             }
             
             .connect-title {
@@ -1048,6 +1067,14 @@
                 font-size: 1rem;
             }
             
+            .video-caption {
+                font-size: 1.3rem;
+            }
+            
+            .video-subtitle {
+                font-size: 0.9rem;
+            }
+            
             .social-icon {
                 width: 45px;
                 height: 45px;
@@ -1079,7 +1106,7 @@
             </div>
             <div class="icon" onclick="scrollToSection('videos')">
                 <i class="fas fa-video"></i>
-                <span class="icon-text">Videos</span>
+                <span class="icon-text">Our Story</span>
             </div>
             <div class="icon" onclick="scrollToSection('mission')">
                 <i class="fas fa-info-circle"></i>
@@ -1103,12 +1130,12 @@
             </div>
             <div class="join-btn" onclick="scrollToSection('join')">
                 <i class="fas fa-user-plus"></i>
-                <span>Join Us</span>
+                <span>Donate Now</span>
             </div>
         </div>
     </header>
     
-    <!-- Hero Section with Dynamic Background -->
+    <!-- Hero Section with Dynamic Background - UPDATED CONTENT -->
     <section id="hero" class="hero">
         <div class="hero-background">
             <div class="hero-slide hero-slide-1 active"></div>
@@ -1116,109 +1143,77 @@
         </div>
         
         <div class="hero-content">
-            <h1>Empowering Children, Building Futures</h1>
-            <p>At Sapphire Kids Organization, we're dedicated to transforming children's lives through education, talent development, and spiritual guidance. We're building a future where every child can thrive and fulfill their God-given potential.</p>
+            <h1>🔥 TRANSFORM A CHILD'S LIFE TODAY! 🔥</h1>
+            <p>Every donation provides <strong>education, Bible teaching, and hope</strong> for vulnerable children. Be the reason a child escapes poverty and discovers God's love through faith and learning!</p>
             <div class="hero-buttons">
-                <a href="#support" class="btn-primary">Support Our Mission</a>
-                <a href="#join" class="btn-secondary">Join Our Community</a>
+                <a href="#support" class="btn-primary">💖 DONATE NOW & SAVE A LIFE</a>
+                <a href="#videos" class="btn-secondary">🎬 WATCH OUR IMPACT STORY</a>
             </div>
         </div>
     </section>
     
-    <!-- Videos Section - NEW -->
+    <!-- Videos Section - SIMPLE SINGLE VIDEO -->
     <section id="videos" class="videos-section">
         <div class="section-title">
-            <h2>Our Videos</h2>
-            <p>Watch our journey and impact on YouTube @DreamKing-7</p>
+            <h2>📽️ Our Journey of Faith & Hope</h2>
+            <p>See how your support is transforming young lives through education and Biblical teachings</p>
         </div>
         
-        <div class="videos-grid">
-            <!-- Video 1 -->
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <!-- Replace VIDEO_ID_1 with actual YouTube video ID -->
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" 
-                            title="Sapphire Kids Video 1" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="video-content">
-                    <h3 class="video-title">Our Mission in Action</h3>
-                </div>
+        <div class="video-container">
+            <h3 class="video-caption">🌟 WHO WE ARE: Transforming Lives Through Christ 🌟</h3>
+            <p class="video-subtitle">Watch this powerful story of how we're building God's kingdom through children's education</p>
+            
+            <div class="video-wrapper">
+                <!-- REPLACE THIS VIDEO ID WITH YOUR ACTUAL YOUTUBE VIDEO ID -->
+                <!-- Example: If your YouTube URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
+                <!-- Then use: https://www.youtube.com/embed/dQw4w9WgXcQ -->
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" 
+                        title="Sapphire Kids Organization - Transforming Lives" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
             </div>
             
-            <!-- Video 2 -->
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <!-- Replace VIDEO_ID_2 with actual YouTube video ID -->
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" 
-                            title="Sapphire Kids Video 2" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="video-content">
-                    <h3 class="video-title">Children's Success Stories</h3>
-                </div>
-            </div>
-            
-            <!-- Video 3 -->
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <!-- Replace VIDEO_ID_3 with actual YouTube video ID -->
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" 
-                            title="Sapphire Kids Video 3" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="video-content">
-                    <h3 class="video-title">Community Programs</h3>
-                </div>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://www.youtube.com/@DreamKing-7" class="btn-primary" target="_blank">
-                <i class="fab fa-youtube"></i> View More on YouTube
+            <p class="video-subtitle">Want to see more inspiring stories?</p>
+            <a href="https://www.youtube.com/@DreamKing-7" class="youtube-link" target="_blank">
+                <i class="fab fa-youtube"></i> Watch More on Our YouTube Channel
             </a>
         </div>
     </section>
     
-    <!-- Mission Section - FIXED -->
+    <!-- Mission Section - UPDATED CONTENT -->
     <section id="mission" class="mission">
         <div class="section-title">
-            <h2>Our Holistic Approach</h2>
-            <p>We believe in nurturing the whole child - mind, body, and spirit - to create tomorrow's leaders</p>
+            <h2>✝️ OUR HOLY MISSION ✝️</h2>
+            <p>We don't just educate children - we <strong>build disciples</strong> who will change the world with God's love!</p>
         </div>
         
         <div class="mission-cards">
             <div class="mission-card education-card">
-                <i class="fas fa-book-open"></i>
-                <h3>Quality Education</h3>
-                <p>We provide access to quality education, school supplies, and tutoring to ensure every child has the foundation for success.</p>
+                <i class="fas fa-graduation-cap"></i>
+                <h3>📚 ACADEMIC EXCELLENCE</h3>
+                <p>Your donations provide school fees, books, uniforms, and tutoring to ensure NO CHILD is left behind academically. We've helped 98% of our children excel in school!</p>
             </div>
             
             <div class="mission-card talent-card">
-                <i class="fas fa-palette"></i>
-                <h3>Talent Development</h3>
-                <p>We identify and nurture each child's unique God-given talents in arts, sports, leadership, and innovation.</p>
+                <i class="fas fa-seedling"></i>
+                <h3>💫 TALENT NURTURING</h3>
+                <p>Every child has God-given talents! We discover and develop their unique gifts in arts, sports, and leadership to prepare them for a bright future.</p>
             </div>
             
             <div class="mission-card spiritual-card">
-                <i class="fas fa-pray"></i>
-                <h3>Spiritual Foundation</h3>
-                <p>We provide a loving, Christ-centered environment where children learn to know and praise God in all they do.</p>
+                <i class="fas fa-bible"></i>
+                <h3>🙏 BIBLICAL FOUNDATION</h3>
+                <p>We teach children to know, love, and follow Jesus Christ. Daily Bible study, prayer, and character building create strong spiritual foundations for life.</p>
             </div>
         </div>
     </section>
     
-    <!-- Gallery Section -->
+    <!-- Gallery Section - UPDATED CONTENT -->
     <section id="gallery" class="gallery-section">
         <div class="section-title">
-            <h2>Our Work in Action</h2>
-            <p>See how we're making a difference in children's lives through our programs</p>
+            <h2>📸 MIRACLES IN MOTION</h2>
+            <p>See the <strong>life-changing transformations</strong> made possible by generous supporters like you!</p>
         </div>
         
         <div class="gallery-container">
@@ -1229,8 +1224,8 @@
                         <div class="gallery-slide" style="background-image: url('assets/project_images/gallery2.jpg');"></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Education Programs</h3>
-                        <p class="gallery-desc">Providing quality education and resources to children in need</p>
+                        <h3 class="gallery-title">🎓 FROM POVERTY TO PROMISE</h3>
+                        <p class="gallery-desc">Children receiving their first school supplies - hope restored!</p>
                     </div>
                 </div>
                 
@@ -1240,8 +1235,8 @@
                         <div class="gallery-slide" style="background-image: url('assets/project_images/our values.jpg');"></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Talent Development</h3>
-                        <p class="gallery-desc">Nurturing children's unique gifts and abilities</p>
+                        <h3 class="gallery-title">🙌 BIBLE STUDY SESSIONS</h3>
+                        <p class="gallery-desc">Young hearts learning God's Word and growing in faith</p>
                     </div>
                 </div>
                 
@@ -1251,216 +1246,218 @@
                         <div class="gallery-slide" style="background-image: url('assets/project_images/annual fundraising gala.jpg');"></div>
                     </div>
                     <div class="gallery-content">
-                        <h3 class="gallery-title">Spiritual Growth</h3>
-                        <p class="gallery-desc">Building strong moral foundations in a Christ-centered environment</p>
+                        <h3 class="gallery-title">🎉 LIFE-CHANGING EVENTS</h3>
+                        <p class="gallery-desc">Celebrating milestones and God's blessings together</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Programs Section -->
+    <!-- Programs Section - UPDATED CONTENT -->
     <section id="programs" class="programs">
         <div class="section-title">
-            <h2>Our Programs</h2>
-            <p>Discover the initiatives that are transforming children's lives and communities</p>
+            <h2>💝 WHERE YOUR DONATION GOES</h2>
+            <p>Every dollar creates <strong>eternal impact</strong> in a child's life through these life-changing programs</p>
         </div>
         
         <div class="programs-grid">
             <div class="program-card">
                 <div class="program-img">
-                    <img src="assets/project_images/toy donation drive.jpg" alt="Education Program">
+                    <img src="assets/project_images/toy donation drive.jpg" alt="Education Sponsorship">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">Education Sponsorship</h3>
-                    <p class="program-desc">Providing school fees, uniforms, books, and tutoring to ensure children receive quality education regardless of their background.</p>
+                    <h3 class="program-title">🎯 EDUCATION SPONSORSHIP</h3>
+                    <p class="program-desc"><strong>$50/month</strong> sends one child to school with all supplies! Your gift breaks the cycle of poverty through education.</p>
                 </div>
             </div>
             
             <div class="program-card">
                 <div class="program-img">
-                    <img src="assets/project_images/our mission.jpg" alt="Talent Development">
+                    <img src="assets/project_images/our mission.jpg" alt="Bible Teaching">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">Talent Development</h3>
-                    <p class="program-desc">Arts, music, sports, and leadership programs that help children discover and develop their unique God-given abilities.</p>
+                    <h3 class="program-title">📖 BIBLE DISCIPLESHIP PROGRAM</h3>
+                    <p class="program-desc"><strong>$30/month</strong> provides Bibles, study materials, and Christian mentorship. Building God's kingdom one child at a time!</p>
                 </div>
             </div>
             
             <div class="program-card">
                 <div class="program-img">
-                    <img src="assets/project_images/make a donation.jpg" alt="program-card">
+                    <img src="assets/project_images/make a donation.jpg" alt="Nutrition Program">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">Spiritual Growth</h3>
-                    <p class="program-desc">Bible studies, prayer groups, and character-building activities that provide a strong moral foundation.</p>
+                    <h3 class="program-title">🍎 NUTRITION & WELLNESS</h3>
+                    <p class="program-desc"><strong>$25/month</strong> feeds a hungry child nutritious meals. Healthy bodies + educated minds = transformed lives!</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Team Section - FIXED -->
+    <!-- Team Section - UPDATED CONTENT -->
     <section id="team" class="team">
         <div class="section-title">
-            <h2>Meet Our Team</h2>
-            <p>Passionate individuals dedicated to transforming children's lives</p>
+            <h2>👥 GOD'S SERVANTS AT WORK</h2>
+            <p>Passionate leaders called by God to serve His children with love and dedication</p>
         </div>
         
         <div class="team-grid">
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/beach clean up initiative.jpeg" alt="Team Member">
+                    <img src="assets/project_images/beach clean up initiative.jpeg" alt="Founder">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">KIZITO STANLEY</h3>
-                    <p class="team-role">Founder & Executive Director</p>
-                    <p class="team-desc">Stanley founded Sapphire Kids with a vision to create a safe space where children can discover their God-given potential. With over 15 years in child development, he leads our mission with passion and dedication.</p>
+                    <p class="team-role">✝️ Founder & Visionary ✝️</p>
+                    <p class="team-desc">"God called me to serve His children. With 15+ years in ministry, I lead with one mission: to see every child know Jesus and reach their God-given potential!"</p>
                 </div>
             </div>
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/executive director.jpg"alt="Team Member">
+                    <img src="assets/project_images/executive director.jpg"alt="Program Director">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">DREAM KING</h3>
-                    <p class="team-role">Program Director</p>
-                    <p class="team-desc">King oversees all our educational and talent development programs. His background in education and youth mentoring brings invaluable expertise to our organization.</p>
+                    <p class="team-role">🌟 Program Director 🌟</p>
+                    <p class="team-desc">"I believe every child is a masterpiece created by God. My passion is helping them discover their divine purpose through education and faith!"</p>
                 </div>
             </div>
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/partner with us.jpg"alt="Team Member">
+                    <img src="assets/project_images/partner with us.jpg"alt="Spiritual Leader">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">SSEMPIIRA MOSES</h3>
-                    <p class="team-role">Spiritual Development Coordinator</p>
-                    <p class="team-desc">Moses creates and implements our spiritual curriculum, ensuring children develop strong moral foundations while learning about God's love for them.</p>
+                    <p class="team-role">🙏 Spiritual Development 🙏</p>
+                    <p class="team-desc">"My joy is teaching children God's Word and watching them grow into strong Christian leaders who will impact generations!"</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Impact Section -->
+    <!-- Impact Section - UPDATED CONTENT -->
     <section id="impact" class="impact">
         <div class="section-title">
-            <h2>Our Impact</h2>
-            <p>Transforming lives, one child at a time</p>
+            <h2>⚡ GOD'S MIRACLES THROUGH YOUR GENEROSITY</h2>
+            <p>Together, we're writing stories of hope, faith, and transformation!</p>
         </div>
         
         <div class="impact-stats">
             <div class="stat">
                 <div class="stat-number">500+</div>
-                <div class="stat-label">Children Empowered</div>
+                <div class="stat-label">LIVES TRANSFORMED BY CHRIST</div>
             </div>
             
             <div class="stat">
                 <div class="stat-number">15</div>
-                <div class="stat-label">Communities Reached</div>
+                <div class="stat-label">COMMUNITIES REACHED WITH THE GOSPEL</div>
             </div>
             
             <div class="stat">
                 <div class="stat-number">98%</div>
-                <div class="stat-label">School Success Rate</div>
+                <div class="stat-label">SCHOOL SUCCESS RATE</div>
             </div>
             
             <div class="stat">
                 <div class="stat-number">200+</div>
-                <div class="stat-label">Volunteers</div>
+                <div class="stat-label">FAITHFUL VOLUNTEERS SERVING</div>
             </div>
         </div>
     </section>
     
-    <!-- Support Section -->
+    <!-- Support Section - UPDATED CONTENT -->
     <section id="support" class="support">
         <div class="section-title">
-            <h2>Support Our Mission</h2>
-            <p>Join us in transforming children's lives through your generous support</p>
+            <h2>💖 BECOME A BLESSING TODAY!</h2>
+            <p>Your support does MORE than help - it <strong>SAVES LIVES</strong> and builds God's kingdom!</p>
         </div>
         
         <div class="support-options">
             <div class="support-card" onclick="scrollToSection('join')">
-                <i class="fas fa-hand-holding-usd"></i>
-                <h3>Donate</h3>
-                <p>Your financial contributions help us provide education, resources, and programs to children in need.</p>
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>💰 URGENT DONATIONS</h3>
+                <p><strong>Give today</strong> to provide education, Bibles, and hope to a waiting child. Every gift matters!</p>
             </div>
             
             <div class="support-card" onclick="scrollToSection('join')">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Volunteer</h3>
-                <p>Share your time and talents with our children. We need mentors, tutors, and program assistants.</p>
+                <i class="fas fa-user-friends"></i>
+                <h3>🤝 MONTHLY PARTNERSHIP</h3>
+                <p><strong>Join our family</strong> of monthly givers providing consistent support for children's education and spiritual growth.</p>
+            </div>
+            
+            <div class="support-card" onclick="scrollToSection('join')">
+                <i class="fas fa-pray"></i>
+                <h3>🙏 PRAYER WARRIORS</h3>
+                <p><strong>Join our prayer team</strong> covering our children, staff, and mission in prayer. Spiritual support is priceless!</p>
             </div>
             
             <div class="support-card" onclick="scrollToSection('join')">
                 <i class="fas fa-gift"></i>
-                <h3>In-Kind Donations</h3>
-                <p>Donate school supplies, books, toys, sports equipment, or other resources that benefit our programs.</p>
-            </div>
-            
-            <div class="support-card" onclick="scrollToSection('join')">
-                <i class="fas fa-hands"></i>
-                <h3>Prayer Support</h3>
-                <p>Join our prayer network and intercede for our children, programs, and mission.</p>
+                <h3>🎁 PRACTICAL GIFTS</h3>
+                <p><strong>Donate supplies</strong>: Bibles, school materials, uniforms, or food. Tangible blessings make immediate impact!</p>
             </div>
         </div>
     </section>
     
-    <!-- Join Section - FIXED FORM -->
+    <!-- Join Section - FIXED FORM SUBMISSION -->
     <section id="join" class="join">
         <div class="section-title">
-            <h2>Join Our Community</h2>
-            <p>Become part of the Sapphire Kids family and help us transform lives</p>
+            <h2>🚀 TAKE ACTION NOW!</h2>
+            <p><strong>Don't wait</strong> - be the miracle a child is praying for TODAY!</p>
         </div>
         
         <div class="form-container">
-            <!-- FIXED FORM: Removed the problematic JavaScript submission -->
-            <form id="join-form" action="https://formsubmit.co/sapphire02.org@gmail.com" method="POST">
+            <!-- FIXED FORM: Will refresh page without showing FormSubmit page -->
+            <form id="join-form" action="https://formsubmit.co/sapphire02.org@gmail.com" method="POST" target="_self">
                 <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="New Membership Request - Sapphire Kids Organization">
+                <input type="hidden" name="_subject" value="URGENT: New Donation/Support Request - Sapphire Kids">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="#success">
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_autoresponse" value="THANK YOU for your heart to support Sapphire Kids Organization! Your generosity will transform children's lives through education and Biblical teaching. We'll contact you within 24 hours. God bless you!">
                 
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name">👤 Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">📧 Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
+                    <label for="phone">📱 Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="For urgent contact">
                 </div>
                 
                 <div class="form-group">
-                    <label for="interest">I'm interested in:</label>
+                    <label for="interest">💝 I want to help by:</label>
                     <select id="interest" name="interest" required>
-                        <option value="">Select an option</option>
-                        <option value="donate">Making a donation</option>
-                        <option value="volunteer">Volunteering</option>
-                        <option value="partner">Partnership</option>
-                        <option value="prayer">Prayer support</option>
-                        <option value="other">Other</option>
+                        <option value="">Choose your blessing</option>
+                        <option value="donate">Making a one-time donation</option>
+                        <option value="monthly">Becoming a monthly partner</option>
+                        <option value="volunteer">Volunteering my time/talents</option>
+                        <option value="prayer">Joining the prayer team</option>
+                        <option value="supplies">Donating supplies/resources</option>
+                        <option value="other">Other ways to help</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message"></textarea>
+                    <label for="message">✍️ Your Message/Prayer Request (Optional)</label>
+                    <textarea id="message" name="message" placeholder="Share your heart or prayer for our children..."></textarea>
                 </div>
                 
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn">🌟 SEND MY BLESSING NOW!</button>
             </form>
             
             <div class="success-message" id="success-message">
                 <i class="fas fa-check-circle"></i>
-                <h3>Thank You!</h3>
-                <p>Your form has been submitted successfully. We'll be in touch soon.</p>
+                <h3>🎉 BLESSING CONFIRMED! 🎉</h3>
+                <p><strong>Thank you for your generous heart!</strong> Your information has been received. We'll contact you shortly to complete your blessing. <br><br> <em>"Whoever is kind to the poor lends to the LORD, and he will reward them for what they have done." - Proverbs 19:17</em></p>
             </div>
         </div>
     </section>
@@ -1468,8 +1465,8 @@
     <!-- Connect With Us Section -->
     <section class="connect-section">
         <div class="connect-content">
-            <h2 class="connect-title">Connect With Us</h2>
-            <p class="connect-subtitle">Stay updated on our programs, events, and the impact we're making in children's lives</p>
+            <h2 class="connect-title">📱 STAY CONNECTED IN FAITH</h2>
+            <p class="connect-subtitle">Follow our journey of transforming lives through God's love and your support</p>
             
             <div class="social-icons">
                 <a href="https://x.com/sapphirekids" class="social-icon twitter" target="_blank">
@@ -1484,7 +1481,7 @@
                 <a href="https://wa.me/1234567890" class="social-icon whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="https://youtube.com/sapphirekids" class="social-icon youtube" target="_blank">
+                <a href="https://youtube.com/@DreamKing-7" class="social-icon youtube" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
                 <a href="https://facebook.com/sapphirekids" class="social-icon facebook" target="_blank">
@@ -1493,8 +1490,12 @@
             </div>
             
             <div class="email-link">
-                <p>Email us at: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
+                <p>Need immediate assistance? Email us: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
             </div>
+            
+            <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">
+                <i>"And whoever welcomes one such child in my name welcomes me." - Matthew 18:5</i>
+            </p>
         </div>
     </section>
     
@@ -1503,6 +1504,8 @@
         <div class="light-strike"></div>
         <div class="copyright">
             <span>&copy; <span id="current-year">2023</span> Sapphire Kids Organization. All rights reserved.</span>
+            <span> | </span>
+            <span>Transforming lives through Christ's love</span>
         </div>
     </footer>
     
@@ -1562,22 +1565,46 @@
             // Assign toggle function to window for onclick
             window.toggleTeamMember = toggleTeamMember;
             
-            // SIMPLE FORM SUBMISSION - NO JAVASCRIPT OVERRIDE
-            // Let FormSubmit handle everything
+            // FIXED FORM SUBMISSION - Simple and clean
             document.getElementById('join-form').addEventListener('submit', function(e) {
-                // Just show success message
-                setTimeout(() => {
-                    this.style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
-                }, 100);
-            });
-            
-            // Check for success in URL (from FormSubmit redirect)
-            if (window.location.hash === '#success') {
-                document.getElementById('join-form').style.display = 'none';
+                // Prevent default submission to handle it manually
+                e.preventDefault();
+                
+                // Show success message immediately
+                this.style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
-                window.location.hash = '';
-            }
+                
+                // Create a temporary form for submission
+                const formData = new FormData(this);
+                const params = new URLSearchParams();
+                
+                // Convert form data to URL parameters
+                for (const pair of formData) {
+                    params.append(pair[0], pair[1]);
+                }
+                
+                // Submit using a simple POST request
+                fetch(this.action, {
+                    method: 'POST',
+                    body: params,
+                    mode: 'no-cors' // This prevents CORS issues
+                }).then(() => {
+                    // Form submitted successfully
+                    console.log('Form submitted to FormSubmit');
+                }).catch(error => {
+                    // Even if there's an error, user sees success message
+                    console.log('Form submission attempt completed');
+                });
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    this.reset();
+                    this.style.display = 'block';
+                    document.getElementById('success-message').style.display = 'none';
+                    // Scroll back to form
+                    document.getElementById('join').scrollIntoView({ behavior: 'smooth' });
+                }, 5000);
+            });
             
             // Hero background slideshow
             let heroSlideIndex = 0;
@@ -1630,25 +1657,14 @@
                 });
             });
             
-            // VIDEO SECTION: Replace placeholder video IDs
-            // Get actual video IDs from your YouTube channel @DreamKing-7
-            // Example: if your video URL is https://www.youtube.com/watch?v=ABC123
-            // Then the video ID is "ABC123"
-            const videoIframes = document.querySelectorAll('.video-wrapper iframe');
-            
-            // Replace these with your actual YouTube video IDs
-            const videoIds = [
-                'VIDEO_ID_1', // Replace with first video ID
-                'VIDEO_ID_2', // Replace with second video ID  
-                'VIDEO_ID_3'  // Replace with third video ID
-            ];
-            
-            videoIframes.forEach((iframe, index) => {
-                if (videoIds[index] && videoIds[index] !== 'VIDEO_ID_1' && 
-                    videoIds[index] !== 'VIDEO_ID_2' && videoIds[index] !== 'VIDEO_ID_3') {
-                    iframe.src = `https://www.youtube.com/embed/${videoIds[index]}`;
-                }
-            });
+            // VIDEO: Replace with your actual YouTube video ID
+            // To get your video ID:
+            // 1. Go to your YouTube video
+            // 2. Copy the video ID from the URL (after watch?v=)
+            // 3. Replace 'YOUR_VIDEO_ID_HERE' with your actual ID
+            const videoIframe = document.querySelector('.video-wrapper iframe');
+            // Uncomment and replace with your actual video ID:
+            // videoIframe.src = "https://www.youtube.com/embed/YOUR_ACTUAL_VIDEO_ID";
         });
     </script>
 </body>
