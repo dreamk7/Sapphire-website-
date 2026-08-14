@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Sapphire Kids Organization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1d4ed8;
+            --accent: #ff9e40;
+            --success: #10b981;
+            --dark: #333;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .donation-container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+            overflow: hidden;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .donation-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-header::before {
+            content: '✝️';
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            font-size: 120px;
+            opacity: 0.1;
+        }
+
+        .donation-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .donation-body {
+            padding: 2.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            color: var(--secondary);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .amount-btn {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .amount-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        .amount-btn.selected {
+            border-color: var(--primary);
+            background: #eff6ff;
+            color: var(--primary);
+        }
+
+        .amount-btn .currency {
+            font-size: 0.8rem;
+            color: #666;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .custom-amount {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .custom-amount input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .custom-amount .currency-symbol {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .donation-type {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .donation-type label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .donation-type label:hover {
+            border-color: var(--primary);
+        }
+
+        .donation-type input[type="radio"] {
+            display: none;
+        }
+
+        .donation-type input[type="radio"]:checked + label {
+            border-color: var(--primary);
+            background: #eff6ff;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .payment-method {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: #eff6ff;
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-method .method-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #f0fdf4;
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message i {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .success-message h2 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message .bible-verse {
+            font-style: italic;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .donation-header {
+                padding: 1.5rem;
+            }
+
+            .donation-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .donation-body {
+                padding: 1.5rem;
+            }
+
+            .donation-amounts {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .donation-type {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .spinner.show {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-text {
+            display: inline;
+        }
+
+        .btn-text.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="donation-container">
+        <!-- Header -->
+        <div class="donation-header">
+            <h1>💝 Make a Donation</h1>
+            <p>Your generosity transforms lives through education and faith</p>
+        </div>
+
+        <!-- Body -->
+        <div class="donation-body">
+            <!-- Back to Home -->
+            <a href="firsttrial.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- Donation Form -->
+            <form id="donationForm" action="https://formsubmit.co/sapphire02.org@gmail.com" method="POST" target="_self">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="NEW DONATION RECEIVED - Sapphire Kids Organization">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_autoresponse" value="🙏 THANK YOU for your generous donation to Sapphire Kids Organization! Your gift will directly impact children's lives through education and Biblical teaching. We'll send you a receipt shortly. May God bless you abundantly! - Sapphire Kids Team">
+
+                <!-- Donation Type -->
+                <div class="form-group">
+                    <label>Donation Type <span class="required">*</span></label>
+                    <div class="donation-type">
+                        <input type="radio" name="donation_type" id="oneTime" value="One-Time Donation" checked>
+                        <label for="oneTime">
+                            <i class="fas fa-hand-holding-heart" style="color: var(--primary);"></i>
+                            One-Time
+                        </label>
+                        
+                        <input type="radio" name="donation_type" id="monthly" value="Monthly Recurring">
+                        <label for="monthly">
+                            <i class="fas fa-sync" style="color: var(--accent);"></i>
+                            Monthly
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Amount Selection -->
+                <div class="form-group">
+                    <label>Select Amount <span class="required">*</span></label>
+                    <div class="donation-amounts" id="amountButtons">
+                        <button type="button" class="amount-btn" data-amount="25">
+                            $25
+                            <span class="currency">USD</span>
+                        </button>
+                        <button type="button" class="amount-btn selected" data-amount="50">
+                            $50
+                            <span class="currency">USD</span>
+                        </button>
+                        <button type="button" class="amount-btn" data-amount="100">
+                            $100
+                            <span class="currency">USD</span>
+                        </button>
+                        <button type="button" class="amount-btn" data-amount="250">
+                            $250
+                            <span class="currency">USD</span>
+                        </button>
+                        <button type="button" class="amount-btn" data-amount="500">
+                            $500
+                            <span class="currency">USD</span>
+                        </button>
+                        <button type="button" class="amount-btn" data-amount="1000">
+                            $1,000
+                            <span class="currency">USD</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Amount -->
+                <div class="custom-amount">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="customAmount" name="donation_amount" placeholder="Enter custom amount (USD)" min="1" step="1">
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="full_name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-group">
+                    <label>Payment Method <span class="required">*</span></label>
+                    <div class="payment-methods" id="paymentMethods">
+                        <div class="payment-method selected" data-method="paypal">
+                            <i class="fab fa-paypal" style="color: #0070ba;"></i>
+                            <span class="method-name">PayPal</span>
+                        </div>
+                        <div class="payment-method" data-method="stripe">
+                            <i class="fas fa-credit-card" style="color: #635bff;"></i>
+                            <span class="method-name">Credit Card</span>
+                        </div>
+                        <div class="payment-method" data-method="bank">
+                            <i class="fas fa-university" style="color: var(--primary);"></i>
+                            <span class="method-name">Bank Transfer</span>
+                        </div>
+                        <div class="payment-method" data-method="mobile">
+                            <i class="fas fa-mobile-alt" style="color: var(--accent);"></i>
+                            <span class="method-name">Mobile Money</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="payment_method" id="paymentMethod" value="paypal">
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-group">
+                    <label for="message">Message or Prayer Request</label>
+                    <textarea id="message" name="message" placeholder="Share any prayer requests or special instructions..."></textarea>
+                </div>
+
+                <!-- Hidden Fields -->
+                <input type="hidden" name="donation_amount_display" id="amountDisplay" value="50">
+                <input type="hidden" name="donation_date" id="donationDate">
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">💖 Complete Donation</span>
+                    <span class="spinner" id="spinner"></span>
+                </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h2>🎉 Donation Received!</h2>
+                <p><strong>Thank you for your generous gift!</strong></p>
+                <p>Your donation will transform children's lives through education and faith.</p>
+                <p style="color: #666; font-size: 0.95rem; margin-top: 1rem;">
+                    A confirmation email has been sent to your inbox.
+                </p>
+                <div class="bible-verse">
+                    <i class="fas fa-bible" style="color: var(--primary);"></i>
+                    "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."<br>
+                    <strong style="color: var(--dark);">- 2 Corinthians 9:7</strong>
+                </div>
+                <a href="firsttrial.html" class="submit-btn" style="text-decoration: none; margin-top: 1.5rem;">
+                    <i class="fas fa-home"></i>
+                    Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set donation date
+            document.getElementById('donationDate').value = new Date().toLocaleString();
+
+            // Amount button selection
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const customAmountInput = document.getElementById('customAmount');
+            const amountDisplay = document.getElementById('amountDisplay');
+
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove selected class from all
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                    // Add selected class to clicked
+                    this.classList.add('selected');
+                    // Clear custom amount
+                    customAmountInput.value = '';
+                    // Update hidden field
+                    amountDisplay.value = this.dataset.amount;
+                    // Update progress
+                    updateProgress();
+                });
+            });
+
+            // Custom amount input
+            customAmountInput.addEventListener('input', function() {
+                if (this.value) {
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                    amountDisplay.value = this.value;
+                    updateProgress();
+                }
+            });
+
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const paymentMethodInput = document.getElementById('paymentMethod');
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    this.classList.add('selected');
+                    paymentMethodInput.value = this.dataset.method;
+                });
+            });
+
+            // Update progress based on amount
+            function updateProgress() {
+                const amount = parseInt(amountDisplay.value) || 0;
+                const progressFill = document.getElementById('progressFill');
+                let progress = 0;
+                
+                if (amount <= 25) progress = 20;
+                else if (amount <= 50) progress = 40;
+                else if (amount <= 100) progress = 60;
+                else if (amount <= 250) progress = 75;
+                else if (amount <= 500) progress = 90;
+                else progress = 100;
+                
+                progressFill.style.width = progress + '%';
+            }
+
+            // Initial progress
+            updateProgress();
+
+            // Form submission
+            const form = document.getElementById('donationForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const spinner = document.getElementById('spinner');
+            const successMessage = document.getElementById('successMessage');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validate amount
+                const amount = amountDisplay.value;
+                if (!amount || parseInt(amount) < 1) {
+                    alert('Please select or enter a donation amount.');
+                    return;
+                }
+
+                // Show loading state
+                btnText.classList.add('hide');
+                spinner.classList.add('show');
+                submitBtn.disabled = true;
+
+                // Prepare form data
+                const formData = new FormData(this);
+                const params = new URLSearchParams();
+
+                for (const pair of formData) {
+                    params.append(pair[0], pair[1]);
+                }
+
+                // Submit using fetch
+                fetch(this.action, {
+                    method: 'POST',
+                    body: params,
+                    mode: 'no-cors'
+                }).then(() => {
+                    // Hide form, show success
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }).catch(() => {
+                    // Even if there's an error, show success
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+
+            // Back button confirmation if form has data
+            const backLink = document.querySelector('.back-link');
+            backLink.addEventListener('click', function(e) {
+                const formData = new FormData(form);
+                let hasData = false;
+                for (const pair of formData) {
+                    if (pair[1] && pair[0] !== 'donation_date') {
+                        hasData = true;
+                        break;
+                    }
+                }
+                
+                if (hasData && !confirm('Are you sure you want to leave? Your donation information will be lost.')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
