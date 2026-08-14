@@ -6,14 +6,13 @@
     <title>SAPPHIRE KIDS ORGANIZATION | Transforming Lives Through Faith & Education</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ALL YOUR EXISTING CSS REMAINS EXACTLY THE SAME */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         :root {
             --primary: #2563eb;
             --secondary: #1d4ed8;
@@ -23,19 +22,25 @@
             --text: #333;
             --success: #10b981;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        /* Header Styles */
+
+        /* ==================== */
+        /* HEADER */
+        /* ==================== */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -44,19 +49,20 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
         }
-        
+
         .logo-img {
             width: 48px;
             height: 48px;
             border-radius: 50%;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .logo-img img {
@@ -65,18 +71,45 @@
             object-fit: cover;
             display: block;
         }
-        
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
+
         .logo-text {
             font-size: 1.25rem;
             font-weight: bold;
+            line-height: 1.2;
         }
-        
+
+        /* SLOGAN WITH BREATHING EFFECT - NO GLOW LIGHT */
+        .logo-slogan {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            font-style: italic;
+            letter-spacing: 1px;
+            display: inline-block;
+            animation: sloganBreathing 2.5s ease-in-out infinite;
+        }
+
+        @keyframes sloganBreathing {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
         .nav-icons {
             display: flex;
             gap: 20px;
             align-items: center;
         }
-        
+
         .icon {
             font-size: 1.2rem;
             cursor: pointer;
@@ -86,32 +119,32 @@
             align-items: center;
             gap: 5px;
         }
-        
+
         .icon i {
             font-size: 1.5rem;
         }
-        
+
         .icon:hover {
             transform: translateY(-3px);
         }
-        
+
         .icon.active {
             color: var(--accent);
             transform: translateY(-3px);
         }
-        
+
         .icon.active i {
             color: var(--accent);
         }
-        
+
         .icon-text {
             font-size: 0.8rem;
         }
-        
+
         .home-icon {
             color: var(--accent);
         }
-        
+
         .join-btn {
             background-color: var(--accent);
             color: white;
@@ -123,14 +156,15 @@
             gap: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
-        
+
         .join-btn:hover {
             background-color: #ff7e1c;
             transform: scale(1.05);
         }
-        
-        /* Hamburger Menu */
+
         .hamburger {
             display: none;
             cursor: pointer;
@@ -139,7 +173,7 @@
             width: 30px;
             height: 21px;
         }
-        
+
         .hamburger span {
             height: 3px;
             width: 100%;
@@ -147,20 +181,22 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-        
+
         .hamburger.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
-        
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
-        
+
         .hamburger.active span:nth-child(3) {
             transform: translateY(-9px) rotate(-45deg);
         }
-        
-        /* Hero Section with Dynamic Background - UPDATED CONTENT */
+
+        /* ==================== */
+        /* HERO SECTION */
+        /* ==================== */
         .hero {
             color: white;
             min-height: 80vh;
@@ -173,7 +209,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-background {
             position: absolute;
             top: 0;
@@ -183,7 +219,7 @@
             z-index: -1;
             transition: opacity 1s ease-in-out;
         }
-        
+
         .hero-slide {
             position: absolute;
             top: 0;
@@ -194,45 +230,71 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            filter: brightness(1.1); /* Increased brightness */
+            filter: brightness(1.1);
         }
-        
+
         .hero-slide.active {
             opacity: 1;
         }
-        
+
         .hero-slide-1 {
             background: linear-gradient(rgba(37, 99, 235, 0.75), rgba(29, 78, 216, 0.8)), url('assets/project_images/bg1.jpg') center/cover no-repeat;
         }
-        
+
         .hero-slide-2 {
             background: linear-gradient(rgba(37, 99, 235, 0.75), rgba(29, 78, 216, 0.8)), url('assets/project_images/bg2.jpg') center/cover no-repeat;
         }
-        
+
         .hero-content {
             max-width: 800px;
             animation: fadeIn 1s ease;
+            padding: 0 1rem;
         }
-        
+
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
+        .animated-text {
+            display: inline-block;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 158, 64, 0.3); }
+            50% { text-shadow: 0 0 30px rgba(255, 158, 64, 0.6), 0 0 60px rgba(255, 158, 64, 0.3); }
+        }
+
         .hero p {
             font-size: 1.3rem;
             margin: 0 auto 2.5rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: slideUp 1.2s ease;
         }
-        
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
             margin-top: 1rem;
+            animation: slideUp 1.5s ease;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        
+
         .btn-primary {
             background-color: var(--accent);
             color: white;
@@ -244,12 +306,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 158, 64, 0.3);
         }
-        
+
         .btn-primary:hover {
             background-color: #ff7e1c;
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 158, 64, 0.5);
         }
-        
+
         .btn-secondary {
             background-color: transparent;
             color: white;
@@ -261,34 +324,122 @@
             border: 2px solid white;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary:hover {
             background-color: white;
             color: var(--primary);
         }
-        
-        /* VIDEO SECTION - SIMPLE & CLEAN */
-        .videos-section {
-            padding: 6rem 2rem;
-            background-color: white;
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .video-container {
-            max-width: 800px;
-            margin: 2rem auto 0;
+
+        /* ==================== */
+        /* SECTION TITLE */
+        /* ==================== */
+        .section-title {
             text-align: center;
+            margin-bottom: 3rem;
         }
-        
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ==================== */
+        /* TYPEWRITER EFFECT - NO CURSOR */
+        /* ==================== */
+        .typewriter-text {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 1px;
+            width: 0;
+            display: inline-block;
+            animation: typing 3s steps(40) 1s forwards;
+            border-right: none;
+        }
+
+        .typewriter-text.short {
+            animation: typing 2s steps(20) 1s forwards;
+        }
+
+        .typewriter-text.long {
+            animation: typing 4s steps(60) 1s forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* ==================== */
+        /* SLIDE IN EFFECTS */
+        /* ==================== */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide-left.visible,
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-left.visible { transition-delay: 0.3s; }
+        .slide-right.visible { transition-delay: 0.5s; }
+
+        /* ==================== */
+        /* WHO WE ARE SECTION */
+        /* ==================== */
+        .who-we-are {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .who-we-are-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .who-we-are-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
+
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -297,60 +448,139 @@
             height: 100%;
             border: 0;
         }
-        
-        .video-caption {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-        
-        .video-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        
-        .youtube-link {
-            display: inline-block;
-            background: #FF0000;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .youtube-link:hover {
-            background: #cc0000;
-            transform: translateY(-3px);
-        }
-        
-        /* Mission Section with Background Images - UPDATED CONTENT */
-        .mission {
+
+        /* ==================== */
+        /* VISION & COMMITMENT SECTION */
+        /* ==================== */
+        .vision-section {
             padding: 6rem 2rem;
-            background-color: white;
+            background: var(--light);
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--dark);
-            max-width: 700px;
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
+
+        .vision-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .vision-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .vision-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .vision-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ==================== */
+        /* UNITED SECTION */
+        /* ==================== */
+        .united-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .united-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .united-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .united-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .united-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .united-card:nth-child(1) { border-top-color: #FF6B6B; transition-delay: 0.1s; }
+        .united-card:nth-child(2) { border-top-color: #4ECDC4; transition-delay: 0.2s; }
+        .united-card:nth-child(3) { border-top-color: #FFE66D; transition-delay: 0.3s; }
+
+        .united-photo-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .united-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .united-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .united-card .role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .united-card .description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== */
+        /* MISSION SECTION */
+        /* ==================== */
+        .mission {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
         .mission-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -358,128 +588,80 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .mission-card {
             border-radius: 10px;
             padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 350px;
+            min-height: 320px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             color: white;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        /* Mission card backgrounds - FIXED to display automatically */
+
+        .mission-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mission-card:nth-child(1) { transition-delay: 0.2s; }
+        .mission-card:nth-child(2) { transition-delay: 0.4s; }
+        .mission-card:nth-child(3) { transition-delay: 0.6s; }
+
         .mission-card.education-card {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
-        
+
         .mission-card.talent-card {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
-        
+
         .mission-card.spiritual-card {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1549056572-75914d6d7e1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
-        
+
         .mission-card:hover {
             transform: translateY(-10px);
         }
-        
+
         .mission-card i {
             font-size: 3rem;
             color: white;
             margin-bottom: 1.5rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
-        
+
         .mission-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: white;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            min-height: 3rem;
         }
-        
+
         .mission-card p {
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.95);
         }
-        
-        /* Photo Gallery Section */
-        .gallery-section {
-            padding: 6rem 2rem;
-            background-color: var(--light);
-        }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .gallery-item {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .gallery-slideshow {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gallery-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        .gallery-slide.active {
-            opacity: 1;
-        }
-        
-        .gallery-content {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .gallery-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .gallery-desc {
-            color: #666;
-        }
-        
-        /* Programs Section - UPDATED CONTENT */
+
+        /* ==================== */
+        /* PROGRAMS SECTION */
+        /* ==================== */
         .programs {
             padding: 6rem 2rem;
-            background-color: white;
+            background: white;
         }
-        
+
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -487,56 +669,69 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .program-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
+
+        .program-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .program-card:nth-child(1) { transition-delay: 0.2s; }
+        .program-card:nth-child(2) { transition-delay: 0.4s; }
+        .program-card:nth-child(3) { transition-delay: 0.6s; }
+
         .program-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .program-img {
             height: 200px;
             overflow: hidden;
         }
-        
+
         .program-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .program-card:hover .program-img img {
             transform: scale(1.05);
         }
-        
+
         .program-content {
             padding: 1.5rem;
         }
-        
+
         .program-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
-        
+
         .program-desc {
             color: #666;
             margin-bottom: 1rem;
         }
-        
-        /* Team Section - Fixed */
+
+        /* ==================== */
+        /* TEAM SECTION */
+        /* ==================== */
         .team {
             padding: 6rem 2rem;
-            background-color: var(--light);
+            background: var(--light);
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -544,7 +739,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .team-member {
             background: white;
             border-radius: 10px;
@@ -557,12 +752,23 @@
             flex-direction: column;
             align-items: center;
             padding: 2rem 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
+
+        .team-member.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member:nth-child(1) { transition-delay: 0.2s; }
+        .team-member:nth-child(2) { transition-delay: 0.4s; }
+        .team-member:nth-child(3) { transition-delay: 0.6s; }
+
         .team-member:hover {
             transform: translateY(-5px);
         }
-        
+
         .team-img {
             width: 150px;
             height: 150px;
@@ -574,30 +780,30 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .team-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        
+
         .team-content {
             text-align: center;
         }
-        
+
         .team-name {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
-        
+
         .team-role {
             color: var(--accent);
             font-weight: 600;
             margin-bottom: 1rem;
         }
-        
+
         .team-desc {
             color: #666;
             font-size: 0.9rem;
@@ -605,28 +811,30 @@
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
-        
+
         .team-member.active .team-desc {
             max-height: 200px;
             margin-top: 1rem;
         }
-        
-        /* Impact Section - UPDATED CONTENT */
+
+        /* ==================== */
+        /* IMPACT SECTION */
+        /* ==================== */
         .impact {
             padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
         }
-        
+
         .impact .section-title h2 {
             color: white;
         }
-        
+
         .impact .section-title p {
             color: rgba(255, 255, 255, 0.9);
         }
-        
+
         .impact-stats {
             display: flex;
             justify-content: center;
@@ -635,177 +843,148 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .stat {
             flex: 1;
             min-width: 200px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
-        
+
+        .stat.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat:nth-child(1) { transition-delay: 0.2s; }
+        .stat:nth-child(2) { transition-delay: 0.4s; }
+        .stat:nth-child(3) { transition-delay: 0.6s; }
+        .stat:nth-child(4) { transition-delay: 0.8s; }
+
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
-        
+
         .stat-label {
             font-size: 1.2rem;
         }
-        
-        /* Support Section with Background Image - UPDATED CONTENT */
-        .support {
+
+        /* ==================== */
+        /* BLESSING SECTION */
+        /* ==================== */
+        .blessing-section {
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         }
-        
-        .support::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
-            z-index: -1;
-        }
-        
-        .support::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(37, 99, 235, 0.9);
-            z-index: -1;
-        }
-        
-        .support .section-title h2 {
+
+        .blessing-section .section-title h2 {
             color: white;
         }
-        
-        .support .section-title p {
+
+        .blessing-section .section-title p {
             color: rgba(255, 255, 255, 0.9);
         }
-        
-        .support-options {
+
+        .blessing-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .support-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
+
+        .blessing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            opacity: 0;
+            transform: translateY(30px);
         }
-        
-        .support-card:hover {
+
+        .blessing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blessing-card:nth-child(1) { transition-delay: 0.2s; }
+        .blessing-card:nth-child(2) { transition-delay: 0.4s; }
+        .blessing-card:nth-child(3) { transition-delay: 0.6s; }
+        .blessing-card:nth-child(4) { transition-delay: 0.8s; }
+
+        .blessing-card:hover {
             transform: translateY(-5px);
-            background: white;
+            background: rgba(255, 255, 255, 0.2);
         }
-        
-        .support-card i {
+
+        .blessing-card i {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
-        
-        .support-card h3 {
+
+        .blessing-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        /* Join Section - FIXED FORM SUBMISSION */
-        .join {
-            padding: 6rem 2rem;
-            background-color: var(--light);
-        }
-        
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: block;
-            margin: 0 auto;
-            transition: all 0.3s ease;
         }
-        
-        .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+        .blessing-card p {
+            color: rgba(255, 255, 255, 0.8);
         }
-        
-        .success-message {
+
+        .join-us-container {
             text-align: center;
-            padding: 2rem;
-            background: #f0fff0;
-            border-radius: 10px;
-            margin-top: 2rem;
-            display: none;
-            animation: fadeIn 0.5s ease;
+            margin-top: 3rem;
         }
-        
-        .success-message i {
-            font-size: 3rem;
-            color: var(--success);
-            margin-bottom: 1rem;
+
+        /* JOIN US BUTTON - REDUCED SIZE */
+        .join-us-btn {
+            display: inline-block;
+            padding: 0.8rem 2.2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b35 100%);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 0 30px rgba(255, 158, 64, 0.3);
+            animation: breathing 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        
-        /* Connect With Us Section - NEW */
+
+        .join-us-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 158, 64, 0.5);
+        }
+
+        @keyframes breathing {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 158, 64, 0.3);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 40px rgba(255, 158, 64, 0.5);
+            }
+        }
+
+        /* ==================== */
+        /* CONNECT SECTION */
+        /* ==================== */
         .connect-section {
             padding: 6rem 2rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -814,20 +993,20 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .connect-content {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
-        
+
         .connect-title {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: white;
         }
-        
+
         .connect-subtitle {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
@@ -836,7 +1015,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .social-icons {
             display: flex;
             justify-content: center;
@@ -844,7 +1023,7 @@
             flex-wrap: wrap;
             margin: 2rem 0;
         }
-        
+
         .social-icon {
             display: flex;
             align-items: center;
@@ -858,41 +1037,24 @@
             color: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        .social-icon.twitter {
-            background: #1DA1F2;
-        }
-        
-        .social-icon.tiktok {
-            background: #000000;
-        }
-        
-        .social-icon.instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-        
-        .social-icon.whatsapp {
-            background: #25D366;
-        }
-        
-        .social-icon.youtube {
-            background: #FF0000;
-        }
-        
-        .social-icon.facebook {
-            background: #1877F2;
-        }
-        
+
+        .social-icon.twitter { background: #1DA1F2; }
+        .social-icon.tiktok { background: #000000; }
+        .social-icon.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-icon.whatsapp { background: #25D366; }
+        .social-icon.youtube { background: #FF0000; }
+        .social-icon.facebook { background: #1877F2; }
+
         .social-icon:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .email-link {
             margin-top: 2rem;
             font-size: 1.2rem;
         }
-        
+
         .email-link a {
             color: var(--accent);
             text-decoration: none;
@@ -902,13 +1064,37 @@
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.1);
         }
-        
+
         .email-link a:hover {
             color: white;
             background: rgba(255, 255, 255, 0.2);
         }
-        
-        /* Footer - Clean Version */
+
+        .bible-verse-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bible-verse-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            transition: opacity 0.5s ease;
+        }
+
+        .bible-verse-text.fade {
+            opacity: 0;
+        }
+
+        /* ==================== */
+        /* FOOTER */
+        /* ==================== */
         footer {
             background: var(--dark);
             color: white;
@@ -917,7 +1103,82 @@
             position: relative;
             overflow: hidden;
         }
-        
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(37, 99, 235, 0.15) 0%,
+                rgba(37, 99, 235, 0.05) 30%,
+                transparent 60%
+            );
+            animation: footerGlow 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes footerGlow {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+            25% {
+                transform: translate(10%, -10%) scale(1.1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-5%, 5%) scale(0.9);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translate(15%, 10%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(255, 158, 64, 0.08) 0%,
+                transparent 50%
+            );
+            animation: footerGlow2 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes footerGlow2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translate(-10%, 5%) scale(1.2);
+                opacity: 0.8;
+            }
+            66% {
+                transform: translate(10%, -5%) scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+        }
+
         .copyright {
             display: flex;
             justify-content: center;
@@ -925,9 +1186,10 @@
             gap: 5px;
             font-size: 0.9rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
-        
-        /* Striking through light effect */
+
         .light-strike {
             position: absolute;
             top: 0;
@@ -936,28 +1198,63 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.1) 50%, 
                 transparent 100%);
             animation: strike 3s infinite;
             pointer-events: none;
+            z-index: 0;
         }
-        
+
         @keyframes strike {
-            0% {
-                transform: translateX(-100%);
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* ==================== */
+        /* BACK TO TOP */
+        /* ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+        }
+
+        /* ==================== */
+        /* RESPONSIVE */
+        /* ==================== */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
             }
-            100% {
-                transform: translateX(100%);
+            
+            .stat-number {
+                font-size: 2.8rem;
             }
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Responsive Styles */
+
         @media (max-width: 768px) {
             .nav-icons {
                 display: none;
@@ -991,23 +1288,31 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
             }
             
             .btn-primary, .btn-secondary {
                 width: 100%;
                 max-width: 300px;
                 text-align: center;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
                 font-size: 2rem;
             }
             
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .united-grid,
             .mission-cards,
             .programs-grid,
-            .support-options,
+            .blessing-options,
             .team-grid,
-            .gallery {
+            .vision-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1023,11 +1328,7 @@
                 font-size: 2.5rem;
             }
             
-            .video-caption {
-                font-size: 1.5rem;
-            }
-            
-            .video-subtitle {
+            .stat-label {
                 font-size: 1rem;
             }
             
@@ -1044,19 +1345,116 @@
                 height: 50px;
                 font-size: 1.3rem;
             }
+            
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .logo-slogan {
+                font-size: 0.6rem;
+            }
+            
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .typewriter-text {
+                white-space: normal;
+                animation: none;
+                width: 100%;
+                border-right: none;
+            }
+            
+            .who-we-are-text {
+                font-size: 1rem;
+            }
+            
+            .vision-card {
+                padding: 1.8rem;
+            }
+            
+            .vision-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .united-card {
+                padding: 1.5rem;
+            }
+            
+            .mission-card {
+                min-height: 280px;
+                padding: 2rem 1.5rem;
+            }
+            
+            .mission-card h3 {
+                font-size: 1.3rem;
+                min-height: 2.5rem;
+            }
+            
+            .program-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .team-member {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            .blessing-card {
+                padding: 1.5rem;
+            }
+            
+            .join-us-btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 480px) {
+            header {
+                padding: 0.6rem 1rem;
+            }
+            
+            .hero {
+                min-height: 70vh;
+                padding: 1.5rem;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
             
             .hero p {
                 font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-buttons {
+                gap: 1rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+                max-width: 250px;
             }
             
             .section-title h2 {
                 font-size: 1.8rem;
+            }
+            
+            .section-title {
+                margin-bottom: 2rem;
             }
             
             .stat-number {
@@ -1064,14 +1462,6 @@
             }
             
             .stat-label {
-                font-size: 1rem;
-            }
-            
-            .video-caption {
-                font-size: 1.3rem;
-            }
-            
-            .video-subtitle {
                 font-size: 0.9rem;
             }
             
@@ -1079,6 +1469,172 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.2rem;
+            }
+            
+            .logo-text {
+                font-size: 0.85rem;
+            }
+            
+            .logo-slogan {
+                font-size: 0.55rem;
+            }
+            
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .icon i {
+                font-size: 1.2rem;
+            }
+            
+            .icon-text {
+                font-size: 0.7rem;
+            }
+            
+            .icon {
+                gap: 3px;
+            }
+            
+            .join-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .who-we-are,
+            .vision-section,
+            .united-section,
+            .mission,
+            .programs,
+            .team,
+            .impact,
+            .blessing-section,
+            .connect-section {
+                padding: 4rem 1rem;
+            }
+            
+            .who-we-are-text {
+                font-size: 0.95rem;
+            }
+            
+            .united-photo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .vision-card {
+                padding: 1.5rem;
+            }
+            
+            .vision-card i {
+                font-size: 2.5rem;
+            }
+            
+            .vision-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .vision-card p {
+                font-size: 0.95rem;
+            }
+            
+            .mission-card {
+                min-height: 250px;
+                padding: 1.8rem 1.2rem;
+            }
+            
+            .mission-card i {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .mission-card h3 {
+                font-size: 1.2rem;
+                min-height: 2rem;
+            }
+            
+            .mission-card p {
+                font-size: 0.95rem;
+            }
+            
+            .program-img {
+                height: 160px;
+            }
+            
+            .program-title {
+                font-size: 1.1rem;
+            }
+            
+            .team-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .team-name {
+                font-size: 1.1rem;
+            }
+            
+            .join-us-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .connect-title {
+                font-size: 1.8rem;
+            }
+            
+            .bible-verse-text {
+                font-size: 0.95rem;
+            }
+            
+            .email-link {
+                font-size: 1rem;
+            }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .copyright {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .logo-text {
+                font-size: 0.75rem;
+            }
+            
+            .logo-slogan {
+                font-size: 0.5rem;
+            }
+            
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
+                max-width: 200px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .united-photo-container {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
@@ -1090,7 +1646,10 @@
             <div class="logo-img">
                 <img src="assets/project_images/logo.png" alt="Sapphire Kids Organization Logo">
             </div>
-            <div class="logo-text">SAPPHIRE KIDS ORGANIZATION</div>
+            <div class="logo-text-container">
+                <div class="logo-text">SAPPHIRE KIDS</div>
+                <div class="logo-slogan">✝️ Raising Champions for Christ ✝️</div>
+            </div>
         </div>
         
         <div class="hamburger" id="hamburger-menu">
@@ -1104,17 +1663,21 @@
                 <i class="fas fa-home"></i>
                 <span class="icon-text">Home</span>
             </div>
-            <div class="icon" onclick="scrollToSection('videos')">
+            <div class="icon" onclick="scrollToSection('who-we-are')">
                 <i class="fas fa-video"></i>
-                <span class="icon-text">Our Story</span>
+                <span class="icon-text">Who We Are</span>
+            </div>
+            <div class="icon" onclick="scrollToSection('vision')">
+                <i class="fas fa-eye"></i>
+                <span class="icon-text">Vision</span>
+            </div>
+            <div class="icon" onclick="scrollToSection('united')">
+                <i class="fas fa-handshake"></i>
+                <span class="icon-text">The United</span>
             </div>
             <div class="icon" onclick="scrollToSection('mission')">
                 <i class="fas fa-info-circle"></i>
                 <span class="icon-text">Our Mission</span>
-            </div>
-            <div class="icon" onclick="scrollToSection('gallery')">
-                <i class="fas fa-images"></i>
-                <span class="icon-text">Gallery</span>
             </div>
             <div class="icon" onclick="scrollToSection('programs')">
                 <i class="fas fa-calendar-alt"></i>
@@ -1124,18 +1687,18 @@
                 <i class="fas fa-users"></i>
                 <span class="icon-text">Our Team</span>
             </div>
-            <div class="icon" onclick="scrollToSection('support')">
+            <div class="icon" onclick="scrollToSection('blessing')">
                 <i class="fas fa-hands-helping"></i>
-                <span class="icon-text">Support</span>
+                <span class="icon-text">Blessing</span>
             </div>
-            <div class="join-btn" onclick="scrollToSection('join')">
+            <div class="join-btn" onclick="window.location.href='donate.html'">
                 <i class="fas fa-user-plus"></i>
-                <span>Donate Now</span>
+                <span>Donate</span>
             </div>
         </div>
     </header>
     
-    <!-- Hero Section with Dynamic Background - UPDATED CONTENT -->
+    <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-background">
             <div class="hero-slide hero-slide-1 active"></div>
@@ -1143,49 +1706,103 @@
         </div>
         
         <div class="hero-content">
-            <h1>🔥 TRANSFORM A CHILD'S LIFE TODAY! 🔥</h1>
+            <h1>
+                <span class="animated-text">🔥 TRANSFORM A CHILD'S LIFE TODAY! 🔥</span>
+            </h1>
             <p>Every donation provides <strong>education, Bible teaching, and hope</strong> for vulnerable children. Be the reason a child escapes poverty and discovers God's love through faith and learning!</p>
             <div class="hero-buttons">
-                <a href="#support" class="btn-primary">💖 DONATE NOW & SAVE A LIFE</a>
-                <a href="#videos" class="btn-secondary">🎬 WATCH OUR IMPACT STORY</a>
+                <a href="donate.html" class="btn-primary">💖 DONATE NOW</a>
+                <a href="#who-we-are" class="btn-secondary">📺 WATCH OUR STORY</a>
             </div>
         </div>
     </section>
     
-    <!-- Videos Section - SIMPLE SINGLE VIDEO -->
-    <section id="videos" class="videos-section">
-        <div class="section-title">
-            <h2>📽️ Our Journey of Faith & Hope</h2>
-            <p>See how your support is transforming young lives through education and Biblical teachings</p>
-        </div>
-        
-        <div class="video-container">
-            <h3 class="video-caption">🌟 WHO WE ARE: Transforming Lives Through Christ 🌟</h3>
-            <p class="video-subtitle">Watch this powerful story of how we're building God's kingdom through children's education</p>
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="who-we-are">
+        <div class="who-we-are-container">
+            <div class="section-title">
+                <h2><span class="typewriter-text">📺 WHO WE ARE</span></h2>
+                <p class="slide-left">Discover the heart behind our mission and the lives we're transforming</p>
+            </div>
+            
+            <p class="who-we-are-text slide-right">
+                Sapphire Kids Organization is a faith-based nonprofit dedicated to transforming the lives of vulnerable children through <strong>quality education</strong> and <strong>Biblical teaching</strong>. We believe every child deserves the opportunity to discover their God-given potential and become a leader who impacts their community.
+            </p>
             
             <div class="video-wrapper">
-                <!-- REPLACE THIS VIDEO ID WITH YOUR ACTUAL YOUTUBE VIDEO ID -->
-                <!-- Example: If your YouTube URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
-                <!-- Then use: https://www.youtube.com/embed/dQw4w9WgXcQ -->
                 <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" 
-                        title="Sapphire Kids Organization - Transforming Lives" 
+                        title="Sapphire Kids Organization - Who We Are" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                 </iframe>
             </div>
-            
-            <p class="video-subtitle">Want to see more inspiring stories?</p>
-            <a href="https://www.youtube.com/@DreamKing-7" class="youtube-link" target="_blank">
-                <i class="fab fa-youtube"></i> Watch More on Our YouTube Channel
-            </a>
         </div>
     </section>
     
-    <!-- Mission Section - UPDATED CONTENT -->
+    <!-- Vision & Commitment Section -->
+    <section id="vision" class="vision-section">
+        <div class="section-title">
+            <h2><span class="typewriter-text">🌟 OUR VISION & COMMITMENT</span></h2>
+            <p class="slide-left">What drives us to serve and how we ensure lasting impact</p>
+        </div>
+        
+        <div class="vision-grid">
+            <div class="vision-card slide-left">
+                <i class="fas fa-eye"></i>
+                <h3>Our Vision</h3>
+                <p>Raising a generation of children who know Christ, excel academically, and become leaders who transform their communities for God's glory.</p>
+            </div>
+            
+            <div class="vision-card slide-right">
+                <i class="fas fa-handshake"></i>
+                <h3>Our Commitment</h3>
+                <p>Every child deserves quality education, spiritual guidance, and the opportunity to discover their God-given purpose. We commit to walking alongside each child until they reach their full potential.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- United Section -->
+    <section id="united" class="united-section">
+        <div class="section-title">
+            <h2><span class="typewriter-text">🤝 MEET THE UNITED</span></h2>
+            <p class="slide-left">The three pillars of leadership that guide our mission</p>
+        </div>
+        
+        <div class="united-grid">
+            <div class="united-card" id="united1">
+                <div class="united-photo-container">
+                    <img class="united-photo" src="assets/project_images/leader1.jpg" alt="Leader 1">
+                </div>
+                <h3>The Executive</h3>
+                <p class="role">Vision & Strategy</p>
+                <p class="description">Provides divine direction, oversees operations, and ensures every initiative aligns with God's purpose for our children.</p>
+            </div>
+            
+            <div class="united-card" id="united2">
+                <div class="united-photo-container">
+                    <img class="united-photo" src="assets/project_images/leader2.jpg" alt="Leader 2">
+                </div>
+                <h3>The Legislative</h3>
+                <p class="role">Policy & Standards</p>
+                <p class="description">Establishes spiritual and educational standards, creates policies that protect children's welfare and spiritual growth.</p>
+            </div>
+            
+            <div class="united-card" id="united3">
+                <div class="united-photo-container">
+                    <img class="united-photo" src="assets/project_images/leader3.jpg" alt="Leader 3">
+                </div>
+                <h3>The Outreach</h3>
+                <p class="role">Impact & Community</p>
+                <p class="description">Leads community engagement, mobilizes resources, and ensures our mission reaches the most vulnerable children.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
     <section id="mission" class="mission">
         <div class="section-title">
-            <h2>✝️ OUR HOLY MISSION ✝️</h2>
-            <p>We don't just educate children - we <strong>build disciples</strong> who will change the world with God's love!</p>
+            <h2><span class="typewriter-text">✝️ OUR HOLY MISSION</span></h2>
+            <p class="slide-left">We don't just educate children - we <strong>build disciples</strong> who will change the world!</p>
         </div>
         
         <div class="mission-cards">
@@ -1209,56 +1826,11 @@
         </div>
     </section>
     
-    <!-- Gallery Section - UPDATED CONTENT -->
-    <section id="gallery" class="gallery-section">
-        <div class="section-title">
-            <h2>📸 MIRACLES IN MOTION</h2>
-            <p>See the <strong>life-changing transformations</strong> made possible by generous supporters like you!</p>
-        </div>
-        
-        <div class="gallery-container">
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="gallery-slideshow">
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/health and nutrition.jpeg');" class="active"></div>
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/gallery2.jpg');"></div>
-                    </div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">🎓 FROM POVERTY TO PROMISE</h3>
-                        <p class="gallery-desc">Children receiving their first school supplies - hope restored!</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <div class="gallery-slideshow">
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/new community center opening.jpg');" class="active"></div>
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/our values.jpg');"></div>
-                    </div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">🙌 BIBLE STUDY SESSIONS</h3>
-                        <p class="gallery-desc">Young hearts learning God's Word and growing in faith</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <div class="gallery-slideshow">
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/our vision.jpg');" class="active"></div>
-                        <div class="gallery-slide" style="background-image: url('assets/project_images/annual fundraising gala.jpg');"></div>
-                    </div>
-                    <div class="gallery-content">
-                        <h3 class="gallery-title">🎉 LIFE-CHANGING EVENTS</h3>
-                        <p class="gallery-desc">Celebrating milestones and God's blessings together</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Programs Section - UPDATED CONTENT -->
+    <!-- Programs Section -->
     <section id="programs" class="programs">
         <div class="section-title">
-            <h2>💝 WHERE YOUR DONATION GOES</h2>
-            <p>Every dollar creates <strong>eternal impact</strong> in a child's life through these life-changing programs</p>
+            <h2><span class="typewriter-text">💝 WHERE YOUR DONATION GOES</span></h2>
+            <p class="slide-left">Every dollar creates <strong>eternal impact</strong> in a child's life</p>
         </div>
         
         <div class="programs-grid">
@@ -1277,7 +1849,7 @@
                     <img src="assets/project_images/our mission.jpg" alt="Bible Teaching">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">📖 BIBLE DISCIPLESHIP PROGRAM</h3>
+                    <h3 class="program-title">📖 BIBLE DISCIPLESHIP</h3>
                     <p class="program-desc"><strong>$30/month</strong> provides Bibles, study materials, and Christian mentorship. Building God's kingdom one child at a time!</p>
                 </div>
             </div>
@@ -1294,11 +1866,11 @@
         </div>
     </section>
     
-    <!-- Team Section - UPDATED CONTENT -->
+    <!-- Team Section -->
     <section id="team" class="team">
         <div class="section-title">
-            <h2>👥 GOD'S SERVANTS AT WORK</h2>
-            <p>Passionate leaders called by God to serve His children with love and dedication</p>
+            <h2><span class="typewriter-text">👥 GOD'S SERVANTS AT WORK</span></h2>
+            <p class="slide-left">Passionate leaders called by God to serve His children</p>
         </div>
         
         <div class="team-grid">
@@ -1315,7 +1887,7 @@
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/executive director.jpg"alt="Program Director">
+                    <img src="assets/project_images/executive director.jpg" alt="Program Director">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">DREAM KING</h3>
@@ -1326,7 +1898,7 @@
             
             <div class="team-member" onclick="toggleTeamMember(this)">
                 <div class="team-img">
-                    <img src="assets/project_images/partner with us.jpg"alt="Spiritual Leader">
+                    <img src="assets/project_images/partner with us.jpg" alt="Spiritual Leader">
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">SSEMPIIRA MOSES</h3>
@@ -1337,22 +1909,22 @@
         </div>
     </section>
     
-    <!-- Impact Section - UPDATED CONTENT -->
+    <!-- Impact Section -->
     <section id="impact" class="impact">
         <div class="section-title">
-            <h2>⚡ GOD'S MIRACLES THROUGH YOUR GENEROSITY</h2>
-            <p>Together, we're writing stories of hope, faith, and transformation!</p>
+            <h2><span class="typewriter-text">⚡ GOD'S MIRACLES THROUGH YOUR GENEROSITY</span></h2>
+            <p class="slide-left">Together, we're writing stories of hope, faith, and transformation!</p>
         </div>
         
         <div class="impact-stats">
             <div class="stat">
                 <div class="stat-number">500+</div>
-                <div class="stat-label">LIVES TRANSFORMED BY CHRIST</div>
+                <div class="stat-label">LIVES TRANSFORMED</div>
             </div>
             
             <div class="stat">
                 <div class="stat-number">15</div>
-                <div class="stat-label">COMMUNITIES REACHED WITH THE GOSPEL</div>
+                <div class="stat-label">COMMUNITIES REACHED</div>
             </div>
             
             <div class="stat">
@@ -1362,111 +1934,57 @@
             
             <div class="stat">
                 <div class="stat-number">200+</div>
-                <div class="stat-label">FAITHFUL VOLUNTEERS SERVING</div>
+                <div class="stat-label">FAITHFUL VOLUNTEERS</div>
             </div>
         </div>
     </section>
     
-    <!-- Support Section - UPDATED CONTENT -->
-    <section id="support" class="support">
+    <!-- Blessing Section -->
+    <section id="blessing" class="blessing-section">
         <div class="section-title">
-            <h2>💖 BECOME A BLESSING TODAY!</h2>
-            <p>Your support does MORE than help - it <strong>SAVES LIVES</strong> and builds God's kingdom!</p>
+            <h2><span class="typewriter-text">💖 TAKE A BLESSING TODAY!</span></h2>
+            <p class="slide-left">Your support does MORE than help - it <strong>SAVES LIVES</strong> and builds God's kingdom!</p>
         </div>
         
-        <div class="support-options">
-            <div class="support-card" onclick="scrollToSection('join')">
+        <div class="blessing-options">
+            <div class="blessing-card">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>💰 URGENT DONATIONS</h3>
                 <p><strong>Give today</strong> to provide education, Bibles, and hope to a waiting child. Every gift matters!</p>
             </div>
             
-            <div class="support-card" onclick="scrollToSection('join')">
+            <div class="blessing-card">
                 <i class="fas fa-user-friends"></i>
                 <h3>🤝 MONTHLY PARTNERSHIP</h3>
                 <p><strong>Join our family</strong> of monthly givers providing consistent support for children's education and spiritual growth.</p>
             </div>
             
-            <div class="support-card" onclick="scrollToSection('join')">
+            <div class="blessing-card">
                 <i class="fas fa-pray"></i>
                 <h3>🙏 PRAYER WARRIORS</h3>
                 <p><strong>Join our prayer team</strong> covering our children, staff, and mission in prayer. Spiritual support is priceless!</p>
             </div>
             
-            <div class="support-card" onclick="scrollToSection('join')">
+            <div class="blessing-card">
                 <i class="fas fa-gift"></i>
                 <h3>🎁 PRACTICAL GIFTS</h3>
                 <p><strong>Donate supplies</strong>: Bibles, school materials, uniforms, or food. Tangible blessings make immediate impact!</p>
             </div>
         </div>
-    </section>
-    
-    <!-- Join Section - FIXED FORM SUBMISSION -->
-    <section id="join" class="join">
-        <div class="section-title">
-            <h2>🚀 TAKE ACTION NOW!</h2>
-            <p><strong>Don't wait</strong> - be the miracle a child is praying for TODAY!</p>
-        </div>
         
-        <div class="form-container">
-            <!-- FIXED FORM: Will refresh page without showing FormSubmit page -->
-            <form id="join-form" action="https://formsubmit.co/sapphire02.org@gmail.com" method="POST" target="_self">
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="URGENT: New Donation/Support Request - Sapphire Kids">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="">
-                <input type="hidden" name="_autoresponse" value="THANK YOU for your heart to support Sapphire Kids Organization! Your generosity will transform children's lives through education and Biblical teaching. We'll contact you within 24 hours. God bless you!">
-                
-                <div class="form-group">
-                    <label for="name">👤 Your Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">📧 Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">📱 Phone Number (Optional)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="For urgent contact">
-                </div>
-                
-                <div class="form-group">
-                    <label for="interest">💝 I want to help by:</label>
-                    <select id="interest" name="interest" required>
-                        <option value="">Choose your blessing</option>
-                        <option value="donate">Making a one-time donation</option>
-                        <option value="monthly">Becoming a monthly partner</option>
-                        <option value="volunteer">Volunteering my time/talents</option>
-                        <option value="prayer">Joining the prayer team</option>
-                        <option value="supplies">Donating supplies/resources</option>
-                        <option value="other">Other ways to help</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">✍️ Your Message/Prayer Request (Optional)</label>
-                    <textarea id="message" name="message" placeholder="Share your heart or prayer for our children..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">🌟 SEND MY BLESSING NOW!</button>
-            </form>
-            
-            <div class="success-message" id="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3>🎉 BLESSING CONFIRMED! 🎉</h3>
-                <p><strong>Thank you for your generous heart!</strong> Your information has been received. We'll contact you shortly to complete your blessing. <br><br> <em>"Whoever is kind to the poor lends to the LORD, and he will reward them for what they have done." - Proverbs 19:17</em></p>
-            </div>
+        <div class="join-us-container">
+            <a href="donate.html" class="join-us-btn">
+                <i class="fas fa-hand-holding-heart"></i>
+                JOIN US - DONATE
+            </a>
         </div>
     </section>
     
-    <!-- Connect With Us Section -->
+    <!-- Connect Section -->
     <section class="connect-section">
         <div class="connect-content">
-            <h2 class="connect-title">📱 STAY CONNECTED IN FAITH</h2>
-            <p class="connect-subtitle">Follow our journey of transforming lives through God's love and your support</p>
+            <h2 class="connect-title"><span class="typewriter-text long">📱 STAY CONNECTED IN FAITH</span></h2>
+            <p class="connect-subtitle slide-left">Follow our journey of transforming lives through God's love</p>
             
             <div class="social-icons">
                 <a href="https://x.com/sapphirekids" class="social-icon twitter" target="_blank">
@@ -1478,7 +1996,7 @@
                 <a href="https://instagram.com/sapphirekids" class="social-icon instagram" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://wa.me/1234567890" class="social-icon whatsapp" target="_blank">
+                <a href="https://wa.me/256700123456" class="social-icon whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <a href="https://youtube.com/@DreamKing-7" class="social-icon youtube" target="_blank">
@@ -1493,9 +2011,11 @@
                 <p>Need immediate assistance? Email us: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
             </div>
             
-            <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">
-                <i>"And whoever welcomes one such child in my name welcomes me." - Matthew 18:5</i>
-            </p>
+            <div class="bible-verse-container">
+                <p class="bible-verse-text" id="bibleVerse">
+                    <i>"And whoever welcomes one such child in my name welcomes me." - Matthew 18:5</i>
+                </p>
+            </div>
         </div>
     </section>
     
@@ -1503,168 +2023,183 @@
     <footer>
         <div class="light-strike"></div>
         <div class="copyright">
-            <span>&copy; <span id="current-year">2023</span> Sapphire Kids Organization. All rights reserved.</span>
-            <span> | </span>
+            <span>&copy; <span id="current-year">2023</span> Sapphire Kids Organization</span>
+            <span>|</span>
             <span>Transforming lives through Christ's love</span>
         </div>
     </footer>
     
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
     <script>
-        // Navigation functionality
+        // Navigation functions
         function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            
-            // Update active icon
-            document.querySelectorAll('.icon').forEach(icon => {
-                icon.classList.remove('active');
-            });
-            
-            // Close mobile menu if open
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('active'));
             document.getElementById('nav-icons').classList.remove('active');
             document.getElementById('hamburger-menu').classList.remove('active');
         }
         
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Update active icon
-            document.querySelectorAll('.icon').forEach(icon => {
-                icon.classList.remove('active');
-            });
+            document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('active'));
             document.querySelector('.home-icon').classList.add('active');
-            
-            // Close mobile menu if open
             document.getElementById('nav-icons').classList.remove('active');
             document.getElementById('hamburger-menu').classList.remove('active');
         }
         
-        // Initialize page
+        function toggleTeamMember(member) {
+            document.querySelectorAll('.team-member').forEach(m => {
+                if (m !== member) m.classList.remove('active');
+            });
+            member.classList.toggle('active');
+        }
+        window.toggleTeamMember = toggleTeamMember;
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
+            // Current year
             document.getElementById('current-year').textContent = new Date().getFullYear();
             
-            // Set up hamburger menu
-            document.getElementById('hamburger-menu').addEventListener('click', function() {
+            // Hamburger menu
+            const hamburger = document.getElementById('hamburger-menu');
+            const navIcons = document.getElementById('nav-icons');
+            
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
                 this.classList.toggle('active');
-                document.getElementById('nav-icons').classList.toggle('active');
+                navIcons.classList.toggle('active');
             });
             
-            // Set up team member click functionality
-            function toggleTeamMember(member) {
-                // Close all other team members
-                document.querySelectorAll('.team-member').forEach(m => {
-                    if (m !== member) {
-                        m.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current member
-                member.classList.toggle('active');
-            }
-            
-            // Assign toggle function to window for onclick
-            window.toggleTeamMember = toggleTeamMember;
-            
-            // FIXED FORM SUBMISSION - Simple and clean
-            document.getElementById('join-form').addEventListener('submit', function(e) {
-                // Prevent default submission to handle it manually
-                e.preventDefault();
-                
-                // Show success message immediately
-                this.style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-                
-                // Create a temporary form for submission
-                const formData = new FormData(this);
-                const params = new URLSearchParams();
-                
-                // Convert form data to URL parameters
-                for (const pair of formData) {
-                    params.append(pair[0], pair[1]);
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!header.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navIcons.classList.remove('active');
                 }
-                
-                // Submit using a simple POST request
-                fetch(this.action, {
-                    method: 'POST',
-                    body: params,
-                    mode: 'no-cors' // This prevents CORS issues
-                }).then(() => {
-                    // Form submitted successfully
-                    console.log('Form submitted to FormSubmit');
-                }).catch(error => {
-                    // Even if there's an error, user sees success message
-                    console.log('Form submission attempt completed');
-                });
-                
-                // Reset form after 5 seconds
-                setTimeout(() => {
-                    this.reset();
-                    this.style.display = 'block';
-                    document.getElementById('success-message').style.display = 'none';
-                    // Scroll back to form
-                    document.getElementById('join').scrollIntoView({ behavior: 'smooth' });
-                }, 5000);
             });
             
-            // Hero background slideshow
+            // Hero slideshow
             let heroSlideIndex = 0;
             const heroSlides = document.querySelectorAll('.hero-slide');
-            
-            function changeHeroSlide() {
-                heroSlides.forEach(slide => slide.classList.remove('active'));
-                heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
-                heroSlides[heroSlideIndex].classList.add('active');
+            if (heroSlides.length > 0) {
+                setInterval(() => {
+                    heroSlides.forEach(s => s.classList.remove('active'));
+                    heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+                    heroSlides[heroSlideIndex].classList.add('active');
+                }, 5000);
             }
             
-            setInterval(changeHeroSlide, 5000);
+            // United photos slideshow
+            const unitedCards = document.querySelectorAll('.united-card');
+            const photoSets = [
+                ['assets/project_images/leader1.jpg', 'assets/project_images/leader2.jpg', 'assets/project_images/leader3.jpg'],
+                ['assets/project_images/leader2.jpg', 'assets/project_images/leader3.jpg', 'assets/project_images/leader1.jpg'],
+                ['assets/project_images/leader3.jpg', 'assets/project_images/leader1.jpg', 'assets/project_images/leader2.jpg']
+            ];
             
-            // Gallery slideshow
-            const galleries = document.querySelectorAll('.gallery-slideshow');
-            
-            galleries.forEach(gallery => {
-                let gallerySlideIndex = 0;
-                const gallerySlides = gallery.querySelectorAll('.gallery-slide');
-                
-                function changeGallerySlide() {
-                    gallerySlides.forEach(slide => slide.classList.remove('active'));
-                    gallerySlideIndex = (gallerySlideIndex + 1) % gallerySlides.length;
-                    gallerySlides[gallerySlideIndex].classList.add('active');
+            unitedCards.forEach((card, index) => {
+                let photoIndex = 0;
+                const img = card.querySelector('.united-photo');
+                if (img) {
+                    setInterval(() => {
+                        photoIndex = (photoIndex + 1) % photoSets[index].length;
+                        img.style.opacity = '0';
+                        setTimeout(() => {
+                            img.src = photoSets[index][photoIndex];
+                            img.style.opacity = '1';
+                        }, 300);
+                    }, 4000 + (index * 500));
                 }
-                
-                setInterval(changeGallerySlide, 4000);
             });
             
-            // Highlight active section in navigation
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all elements with slide effects
+            document.querySelectorAll('.slide-left, .slide-right').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe united cards
+            document.querySelectorAll('.united-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe mission cards
+            document.querySelectorAll('.mission-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe program cards
+            document.querySelectorAll('.program-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe team members
+            document.querySelectorAll('.team-member').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe stats
+            document.querySelectorAll('.stat').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe blessing cards
+            document.querySelectorAll('.blessing-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Back to top
+            const backToTop = document.getElementById('backToTop');
+            let lastScrollY = 0;
+            
             window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('section');
-                const navIcons = document.querySelectorAll('.icon');
-                
-                let currentSection = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 200)) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-                
-                navIcons.forEach(icon => {
-                    icon.classList.remove('active');
-                    if (icon.classList.contains('home-icon') && currentSection === 'hero') {
-                        icon.classList.add('active');
-                    }
-                });
-            });
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+                lastScrollY = currentScrollY;
+            }, { passive: true });
             
-            // VIDEO: Replace with your actual YouTube video ID
-            // To get your video ID:
-            // 1. Go to your YouTube video
-            // 2. Copy the video ID from the URL (after watch?v=)
-            // 3. Replace 'YOUR_VIDEO_ID_HERE' with your actual ID
-            const videoIframe = document.querySelector('.video-wrapper iframe');
-            // Uncomment and replace with your actual video ID:
-            // videoIframe.src = "https://www.youtube.com/embed/YOUR_ACTUAL_VIDEO_ID";
+            // Bible verse rotator
+            const verses = [
+                '<i>"And whoever welcomes one such child in my name welcomes me." - Matthew 18:5</i>',
+                '<i>"Train up a child in the way he should go, and when he is old he will not depart from it." - Proverbs 22:6</i>',
+                '<i>"Let the little children come to me, and do not hinder them, for the kingdom of heaven belongs to such as these." - Matthew 19:14</i>'
+            ];
+            let verseIdx = 0;
+            const verseEl = document.getElementById('bibleVerse');
+            
+            if (verseEl) {
+                setInterval(() => {
+                    verseIdx = (verseIdx + 1) % verses.length;
+                    verseEl.classList.add('fade');
+                    setTimeout(() => {
+                        verseEl.innerHTML = verses[verseIdx];
+                        verseEl.classList.remove('fade');
+                    }, 500);
+                }, 6000);
+            }
         });
     </script>
 </body>
