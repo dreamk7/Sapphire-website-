@@ -83,7 +83,6 @@
             line-height: 1.2;
         }
 
-        /* SLOGAN WITH BREATHING EFFECT - NO GLOW LIGHT */
         .logo-slogan {
             font-size: 0.7rem;
             opacity: 0.9;
@@ -158,6 +157,8 @@
             cursor: pointer;
             font-size: 0.9rem;
             white-space: nowrap;
+            text-decoration: none;
+            border: none;
         }
 
         .join-btn:hover {
@@ -305,6 +306,9 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 158, 64, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -323,6 +327,8 @@
             font-size: 1.1rem;
             border: 2px solid white;
             transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
         }
 
         .btn-secondary:hover {
@@ -949,7 +955,6 @@
             margin-top: 3rem;
         }
 
-        /* JOIN US BUTTON - REDUCED SIZE */
         .join-us-btn {
             display: inline-block;
             padding: 0.8rem 2.2rem;
@@ -1691,10 +1696,11 @@
                 <i class="fas fa-hands-helping"></i>
                 <span class="icon-text">Blessing</span>
             </div>
-            <div class="join-btn" onclick="window.location.href='donate.html'">
+            <!-- FIXED: Header Donate button links to donate.html -->
+            <a href="donate.html" class="join-btn">
                 <i class="fas fa-user-plus"></i>
                 <span>Donate</span>
-            </div>
+            </a>
         </div>
     </header>
     
@@ -1711,6 +1717,7 @@
             </h1>
             <p>Every donation provides <strong>education, Bible teaching, and hope</strong> for vulnerable children. Be the reason a child escapes poverty and discovers God's love through faith and learning!</p>
             <div class="hero-buttons">
+                <!-- FIXED: Hero Donate button links to donate.html -->
                 <a href="donate.html" class="btn-primary">💖 DONATE NOW</a>
                 <a href="#who-we-are" class="btn-secondary">📺 WATCH OUR STORY</a>
             </div>
@@ -1973,6 +1980,7 @@
         </div>
         
         <div class="join-us-container">
+            <!-- FIXED: Blessing JOIN US button links to donate.html -->
             <a href="donate.html" class="join-us-btn">
                 <i class="fas fa-hand-holding-heart"></i>
                 JOIN US - DONATE
@@ -2069,6 +2077,7 @@
             // Hamburger menu
             const hamburger = document.getElementById('hamburger-menu');
             const navIcons = document.getElementById('nav-icons');
+            const header = document.querySelector('header');
             
             hamburger.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -2169,16 +2178,13 @@
             
             // Back to top
             const backToTop = document.getElementById('backToTop');
-            let lastScrollY = 0;
             
             window.addEventListener('scroll', function() {
-                const currentScrollY = window.scrollY;
-                if (currentScrollY > 300) {
+                if (window.scrollY > 300) {
                     backToTop.classList.add('visible');
                 } else {
                     backToTop.classList.remove('visible');
                 }
-                lastScrollY = currentScrollY;
             }, { passive: true });
             
             // Bible verse rotator
@@ -2200,6 +2206,50 @@
                     }, 500);
                 }, 6000);
             }
+            
+            // Keyboard accessibility - close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hamburger.classList.remove('active');
+                    navIcons.classList.remove('active');
+                }
+            });
+            
+            // Keyboard accessibility - team members
+            document.querySelectorAll('.team-member').forEach(member => {
+                member.setAttribute('tabindex', '0');
+                member.setAttribute('role', 'button');
+                member.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleTeamMember(this);
+                    }
+                });
+            });
+            
+            // Keyboard accessibility - united cards
+            document.querySelectorAll('.united-card').forEach(card => {
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'article');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Keyboard accessibility - blessing cards
+            document.querySelectorAll('.blessing-card').forEach(card => {
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
         });
     </script>
 </body>
