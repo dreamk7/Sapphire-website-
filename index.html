@@ -503,7 +503,7 @@
         }
 
         /* ==================== */
-        /* UNITS SECTION - RECTANGULAR IMAGES WITH FULL DESCRIPTION */
+        /* UNITS SECTION - 75% IMAGE, 25% TEXT */
         /* ==================== */
         .united-section {
             padding: 6rem 2rem;
@@ -527,6 +527,8 @@
             border-top: 4px solid var(--primary);
             opacity: 0;
             transform: translateY(30px);
+            display: flex;
+            flex-direction: column;
         }
 
         .united-card.visible {
@@ -543,16 +545,21 @@
         .united-card:nth-child(2) { border-top-color: #4ECDC4; transition-delay: 0.2s; }
         .united-card:nth-child(3) { border-top-color: #FFE66D; transition-delay: 0.3s; }
 
-        /* RECTANGULAR IMAGE - LARGER AND CLEARER */
+        /* IMAGE TAKES 75% OF THE CARD */
         .united-img-container {
             width: 100%;
-            height: 300px;
+            height: 0;
+            padding-bottom: 75%;
             overflow: hidden;
             position: relative;
             background: #f0f0f0;
+            flex-shrink: 0;
         }
 
         .united-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -564,28 +571,30 @@
             transform: scale(1.05);
         }
 
+        /* TEXT TAKES 25% OF THE CARD */
         .united-card-content {
-            padding: 1.8rem;
+            padding: 1.2rem 1.5rem;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .united-card-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
             color: var(--dark);
         }
 
         .united-card-content .role {
             color: var(--primary);
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
         }
 
         .united-card-content .description {
             color: #555;
-            font-size: 0.98rem;
-            line-height: 1.8;
+            font-size: 0.88rem;
+            line-height: 1.6;
         }
 
         /* ==================== */
@@ -708,7 +717,6 @@
             transform: translateY(-5px);
         }
 
-        /* LARGER IMAGES */
         .program-img {
             height: 260px;
             overflow: hidden;
@@ -1403,7 +1411,19 @@
             }
             
             .united-img-container {
-                height: 220px;
+                padding-bottom: 70%;
+            }
+            
+            .united-card-content {
+                padding: 1rem 1.2rem;
+            }
+            
+            .united-card-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .united-card-content .description {
+                font-size: 0.85rem;
             }
             
             .mission-card {
@@ -1546,7 +1566,23 @@
             }
             
             .united-img-container {
-                height: 180px;
+                padding-bottom: 65%;
+            }
+            
+            .united-card-content {
+                padding: 0.8rem 1rem;
+            }
+            
+            .united-card-content h3 {
+                font-size: 1rem;
+            }
+            
+            .united-card-content .role {
+                font-size: 0.8rem;
+            }
+            
+            .united-card-content .description {
+                font-size: 0.82rem;
             }
             
             .vision-card {
@@ -1664,7 +1700,7 @@
             }
             
             .united-img-container {
-                height: 150px;
+                padding-bottom: 60%;
             }
         }
     </style>
@@ -1791,7 +1827,7 @@
         </div>
     </section>
     
-    <!-- Units Section - RECTANGULAR IMAGES, FULL DESCRIPTION -->
+    <!-- Units Section - 75% IMAGE, 25% TEXT -->
     <section id="united" class="united-section">
         <div class="section-title">
             <h2><span class="typewriter-text">MEET THE UNITS</span></h2>
