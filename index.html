@@ -503,7 +503,7 @@
         }
 
         /* ==================== */
-        /* UNITED SECTION */
+        /* UNITS SECTION - RECTANGULAR IMAGES WITH FULL DESCRIPTION */
         /* ==================== */
         .united-section {
             padding: 6rem 2rem;
@@ -512,7 +512,7 @@
 
         .united-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -521,8 +521,7 @@
         .united-card {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border-top: 4px solid var(--primary);
@@ -544,39 +543,49 @@
         .united-card:nth-child(2) { border-top-color: #4ECDC4; transition-delay: 0.2s; }
         .united-card:nth-child(3) { border-top-color: #FFE66D; transition-delay: 0.3s; }
 
-        .united-photo-container {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+        /* RECTANGULAR IMAGE - LARGER AND CLEARER */
+        .united-img-container {
+            width: 100%;
+            height: 300px;
             overflow: hidden;
-            margin: 0 auto 1rem;
-            border: 4px solid var(--primary);
             position: relative;
+            background: #f0f0f0;
         }
 
-        .united-photo {
+        .united-img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.5s ease;
+            transition: transform 0.5s ease;
+            display: block;
         }
 
-        .united-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+        .united-card:hover .united-img-container img {
+            transform: scale(1.05);
+        }
+
+        .united-card-content {
+            padding: 1.8rem;
+            text-align: center;
+        }
+
+        .united-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
             color: var(--dark);
         }
 
-        .united-card .role {
+        .united-card-content .role {
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
         }
 
-        .united-card .description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .united-card-content .description {
+            color: #555;
+            font-size: 0.98rem;
+            line-height: 1.8;
         }
 
         /* ==================== */
@@ -661,7 +670,7 @@
         }
 
         /* ==================== */
-        /* PROGRAMS SECTION */
+        /* PROGRAMS SECTION - REDUCED TEXT, LARGER IMAGES */
         /* ==================== */
         .programs {
             padding: 6rem 2rem;
@@ -670,7 +679,7 @@
 
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -699,9 +708,11 @@
             transform: translateY(-5px);
         }
 
+        /* LARGER IMAGES */
         .program-img {
-            height: 200px;
+            height: 260px;
             overflow: hidden;
+            background: #f0f0f0;
         }
 
         .program-img img {
@@ -709,6 +720,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            display: block;
         }
 
         .program-card:hover .program-img img {
@@ -717,17 +729,19 @@
 
         .program-content {
             padding: 1.5rem;
+            text-align: center;
         }
 
         .program-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
 
         .program-desc {
-            color: #666;
-            margin-bottom: 1rem;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* ==================== */
@@ -1384,7 +1398,12 @@
             }
             
             .united-card {
-                padding: 1.5rem;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            
+            .united-img-container {
+                height: 220px;
             }
             
             .mission-card {
@@ -1400,6 +1419,10 @@
             .program-card {
                 max-width: 400px;
                 margin: 0 auto;
+            }
+            
+            .program-img {
+                height: 200px;
             }
             
             .team-member {
@@ -1522,9 +1545,8 @@
                 font-size: 0.95rem;
             }
             
-            .united-photo-container {
-                width: 100px;
-                height: 100px;
+            .united-img-container {
+                height: 180px;
             }
             
             .vision-card {
@@ -1568,6 +1590,10 @@
             
             .program-title {
                 font-size: 1.1rem;
+            }
+            
+            .program-desc {
+                font-size: 0.9rem;
             }
             
             .team-img {
@@ -1637,9 +1663,8 @@
                 font-size: 1.5rem;
             }
             
-            .united-photo-container {
-                width: 80px;
-                height: 80px;
+            .united-img-container {
+                height: 150px;
             }
         }
     </style>
@@ -1678,7 +1703,7 @@
             </div>
             <div class="icon" onclick="scrollToSection('united')">
                 <i class="fas fa-handshake"></i>
-                <span class="icon-text">The United</span>
+                <span class="icon-text">The Units</span>
             </div>
             <div class="icon" onclick="scrollToSection('mission')">
                 <i class="fas fa-info-circle"></i>
@@ -1696,7 +1721,6 @@
                 <i class="fas fa-hands-helping"></i>
                 <span class="icon-text">Blessing</span>
             </div>
-            <!-- FIXED: Header Donate button links to donate.html -->
             <a href="donation.html" class="join-btn">
                 <i class="fas fa-user-plus"></i>
                 <span>Donate</span>
@@ -1717,7 +1741,6 @@
             </h1>
             <p>Every donation provides <strong>education, Bible teaching, and hope</strong> for vulnerable children. Be the reason a child escapes poverty and discovers God's love through faith and learning!</p>
             <div class="hero-buttons">
-                <!-- FIXED: Hero Donate button links to donate.html -->
                 <a href="donation.html" class="btn-primary">DONATE NOW</a>
                 <a href="#who-we-are" class="btn-secondary">WATCH OUR STORY</a>
             </div>
@@ -1737,7 +1760,7 @@
             </p>
             
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" 
+                <iframe src="https://www.youtubeone.com/embed/YOUR_VIDEO_ID_HERE" 
                         title="Sapphire Kids Organization - Who We Are" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -1768,39 +1791,45 @@
         </div>
     </section>
     
-    <!-- United Section -->
+    <!-- Units Section - RECTANGULAR IMAGES, FULL DESCRIPTION -->
     <section id="united" class="united-section">
         <div class="section-title">
-            <h2><span class="typewriter-text">MEET THE UNITED</span></h2>
+            <h2><span class="typewriter-text">MEET THE UNITS</span></h2>
             <p class="slide-left">The three pillars of leadership that guide our mission</p>
         </div>
         
         <div class="united-grid">
             <div class="united-card" id="united1">
-                <div class="united-photo-container">
-                    <img class="united-photo" src="assets/project_images/leader1.jpg" alt="Leader 1">
+                <div class="united-img-container">
+                    <img src="assets/project_images/leader1.jpg" alt="The Executive Unit">
                 </div>
-                <h3>The Executive</h3>
-                <p class="role">Vision & Strategy</p>
-                <p class="description">Provides divine direction, oversees operations, and ensures every initiative aligns with God's purpose for our children.</p>
+                <div class="united-card-content">
+                    <h3>The Executive Unit</h3>
+                    <p class="role">Vision & Strategy</p>
+                    <p class="description">Provides divine direction, oversees operations, and ensures every initiative aligns with God's purpose for our children. This unit is responsible for strategic planning, resource mobilization, and maintaining the highest standards of organizational integrity and spiritual alignment.</p>
+                </div>
             </div>
             
             <div class="united-card" id="united2">
-                <div class="united-photo-container">
-                    <img class="united-photo" src="assets/project_images/leader2.jpg" alt="Leader 2">
+                <div class="united-img-container">
+                    <img src="assets/project_images/leader2.jpg" alt="The Legislative Unit">
                 </div>
-                <h3>The Legislative</h3>
-                <p class="role">Policy & Standards</p>
-                <p class="description">Establishes spiritual and educational standards, creates policies that protect children's welfare and spiritual growth.</p>
+                <div class="united-card-content">
+                    <h3>The Legislative Unit</h3>
+                    <p class="role">Policy & Standards</p>
+                    <p class="description">Establishes spiritual and educational standards, creates policies that protect children's welfare and spiritual growth. This unit ensures that all programs adhere to biblical principles and meet the highest educational benchmarks for excellence.</p>
+                </div>
             </div>
             
             <div class="united-card" id="united3">
-                <div class="united-photo-container">
-                    <img class="united-photo" src="assets/project_images/leader3.jpg" alt="Leader 3">
+                <div class="united-img-container">
+                    <img src="assets/project_images/leader3.jpg" alt="The Outreach Unit">
                 </div>
-                <h3>The Outreach</h3>
-                <p class="role">Impact & Community</p>
-                <p class="description">Leads community engagement, mobilizes resources, and ensures our mission reaches the most vulnerable children.</p>
+                <div class="united-card-content">
+                    <h3>The Outreach Unit</h3>
+                    <p class="role">Impact & Community</p>
+                    <p class="description">Leads community engagement, mobilizes resources, and ensures our mission reaches the most vulnerable children. This unit builds partnerships, coordinates volunteer efforts, and expands our reach to transform more lives through God's love.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1833,7 +1862,7 @@
         </div>
     </section>
     
-    <!-- Programs Section -->
+    <!-- Programs Section - REDUCED TEXT, LARGER IMAGES -->
     <section id="programs" class="programs">
         <div class="section-title">
             <h2><span class="typewriter-text">💝 WHERE YOUR DONATION GOES</span></h2>
@@ -1847,7 +1876,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">🎯 EDUCATION SPONSORSHIP</h3>
-                    <p class="program-desc"><strong>$50/month</strong> sends one child to school with all supplies! Your gift breaks the cycle of poverty through education.</p>
+                    <p class="program-desc">$50/month sends one child to school with all supplies. Your gift breaks the cycle of poverty through education.</p>
                 </div>
             </div>
             
@@ -1857,7 +1886,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">📖 BIBLE DISCIPLESHIP</h3>
-                    <p class="program-desc"><strong>$30/month</strong> provides Bibles, study materials, and Christian mentorship. Building God's kingdom one child at a time!</p>
+                    <p class="program-desc">$30/month provides Bibles, study materials, and Christian mentorship. Building God's kingdom one child at a time!</p>
                 </div>
             </div>
             
@@ -1867,7 +1896,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">🍎 NUTRITION & WELLNESS</h3>
-                    <p class="program-desc"><strong>$25/month</strong> feeds a hungry child nutritious meals. Healthy bodies + educated minds = transformed lives!</p>
+                    <p class="program-desc">$25/month feeds a hungry child nutritious meals. Healthy bodies + educated minds = transformed lives!</p>
                 </div>
             </div>
         </div>
@@ -1980,7 +2009,6 @@
         </div>
         
         <div class="join-us-container">
-            <!-- FIXED: Blessing JOIN US button links to donate.html -->
             <a href="donation.html" class="join-us-btn">
                 <i class="fas fa-hand-holding-heart"></i>
                 JOIN US - DONATE
@@ -2103,29 +2131,6 @@
                     heroSlides[heroSlideIndex].classList.add('active');
                 }, 5000);
             }
-            
-            // United photos slideshow
-            const unitedCards = document.querySelectorAll('.united-card');
-            const photoSets = [
-                ['assets/project_images/leader1.jpg', 'assets/project_images/leader2.jpg', 'assets/project_images/leader3.jpg'],
-                ['assets/project_images/leader2.jpg', 'assets/project_images/leader3.jpg', 'assets/project_images/leader1.jpg'],
-                ['assets/project_images/leader3.jpg', 'assets/project_images/leader1.jpg', 'assets/project_images/leader2.jpg']
-            ];
-            
-            unitedCards.forEach((card, index) => {
-                let photoIndex = 0;
-                const img = card.querySelector('.united-photo');
-                if (img) {
-                    setInterval(() => {
-                        photoIndex = (photoIndex + 1) % photoSets[index].length;
-                        img.style.opacity = '0';
-                        setTimeout(() => {
-                            img.src = photoSets[index][photoIndex];
-                            img.style.opacity = '1';
-                        }, 300);
-                    }, 4000 + (index * 500));
-                }
-            });
             
             // Intersection Observer for scroll animations
             const observerOptions = {
