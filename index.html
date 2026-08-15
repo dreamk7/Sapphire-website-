@@ -503,7 +503,7 @@
         }
 
         /* ==================== */
-        /* UNITS SECTION - 75% IMAGE, 25% TEXT */
+        /* UNITS SECTION - 90% IMAGE, 10% TEXT (TITLE ONLY) */
         /* ==================== */
         .united-section {
             padding: 6rem 2rem;
@@ -529,6 +529,8 @@
             transform: translateY(30px);
             display: flex;
             flex-direction: column;
+            cursor: pointer;
+            position: relative;
         }
 
         .united-card.visible {
@@ -545,15 +547,16 @@
         .united-card:nth-child(2) { border-top-color: #4ECDC4; transition-delay: 0.2s; }
         .united-card:nth-child(3) { border-top-color: #FFE66D; transition-delay: 0.3s; }
 
-        /* IMAGE TAKES 75% OF THE CARD */
+        /* IMAGE TAKES 90% OF THE CARD */
         .united-img-container {
             width: 100%;
             height: 0;
-            padding-bottom: 75%;
+            padding-bottom: 90%;
             overflow: hidden;
             position: relative;
             background: #f0f0f0;
             flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
         .united-img-container img {
@@ -571,30 +574,86 @@
             transform: scale(1.05);
         }
 
-        /* TEXT TAKES 25% OF THE CARD */
+        /* TEXT TAKES 10% - TITLE ONLY VISIBLE */
         .united-card-content {
-            padding: 1.2rem 1.5rem;
+            padding: 0.5rem 1rem;
             text-align: center;
             flex-shrink: 0;
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .united-card-content h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 0.2rem;
             color: var(--dark);
+            transition: color 0.3s ease;
         }
 
         .united-card-content .role {
             color: var(--primary);
             font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0;
+            display: block;
         }
 
         .united-card-content .description {
             color: #555;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            margin-top: 0;
+        }
+
+        /* EXPANDED STATE - SHOW FULL DESCRIPTION */
+        .united-card.expanded .united-img-container {
+            padding-bottom: 60%;
+        }
+
+        .united-card.expanded .united-card-content {
+            padding: 1rem 1.5rem 1.2rem;
+        }
+
+        .united-card.expanded .united-card-content .description {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 0.5rem;
+        }
+
+        .united-card.expanded .united-card-content h3 {
+            color: var(--primary);
+        }
+
+        /* Click indicator */
+        .united-card .click-hint {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .united-card:hover .click-hint {
+            opacity: 1;
+        }
+
+        .united-card.expanded .click-hint {
+            opacity: 0;
         }
 
         /* ==================== */
@@ -1411,18 +1470,30 @@
             }
             
             .united-img-container {
-                padding-bottom: 70%;
+                padding-bottom: 85%;
             }
             
             .united-card-content {
-                padding: 1rem 1.2rem;
+                padding: 0.4rem 1rem;
             }
             
             .united-card-content h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
-            .united-card-content .description {
+            .united-card-content .role {
+                font-size: 0.75rem;
+            }
+            
+            .united-card.expanded .united-img-container {
+                padding-bottom: 55%;
+            }
+            
+            .united-card.expanded .united-card-content {
+                padding: 0.8rem 1.2rem 1rem;
+            }
+            
+            .united-card.expanded .united-card-content .description {
                 font-size: 0.85rem;
             }
             
@@ -1566,23 +1637,37 @@
             }
             
             .united-img-container {
-                padding-bottom: 65%;
+                padding-bottom: 80%;
             }
             
             .united-card-content {
-                padding: 0.8rem 1rem;
+                padding: 0.3rem 0.8rem;
             }
             
             .united-card-content h3 {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .united-card-content .role {
+                font-size: 0.7rem;
+            }
+            
+            .united-card.expanded .united-img-container {
+                padding-bottom: 50%;
+            }
+            
+            .united-card.expanded .united-card-content {
+                padding: 0.6rem 1rem 0.8rem;
+            }
+            
+            .united-card.expanded .united-card-content .description {
                 font-size: 0.8rem;
             }
             
-            .united-card-content .description {
-                font-size: 0.82rem;
+            .united-card .click-hint {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.8rem;
+                bottom: 8%;
             }
             
             .vision-card {
@@ -1700,7 +1785,7 @@
             }
             
             .united-img-container {
-                padding-bottom: 60%;
+                padding-bottom: 75%;
             }
         }
     </style>
@@ -1796,7 +1881,7 @@
             </p>
             
             <div class="video-wrapper">
-                <iframe src="<iframe src="https://www.youtube.com/embed/https://youtube.com/shorts/RNbKDRNvkL0?si=mILWUWD6Q2n9fQ9Z" 
+                <iframe src="https://www.youtube.com/embed/RNbKDRNvkL0" 
                         title="Sapphire Kids Organization - Who We Are" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -1827,15 +1912,15 @@
         </div>
     </section>
     
-    <!-- Units Section - 75% IMAGE, 25% TEXT -->
+    <!-- Units Section - 90% IMAGE, 10% TEXT (TITLE ONLY, CLICK TO EXPAND) -->
     <section id="united" class="united-section">
         <div class="section-title">
             <h2><span class="typewriter-text">MEET THE UNITS</span></h2>
-            <p class="slide-left">The three pillars of leadership that guide our mission</p>
+            <p class="slide-left">The three pillars of leadership that guide our mission — click to learn more</p>
         </div>
         
         <div class="united-grid">
-            <div class="united-card" id="united1">
+            <div class="united-card" id="united1" onclick="toggleUnit(this)">
                 <div class="united-img-container">
                     <img src="assets/project_images/leader1.jpg" alt="The Executive Unit">
                 </div>
@@ -1844,9 +1929,10 @@
                     <p class="role">Vision & Strategy</p>
                     <p class="description">Provides divine direction, oversees operations, and ensures every initiative aligns with God's purpose for our children. This unit is responsible for strategic planning, resource mobilization, and maintaining the highest standards of organizational integrity and spiritual alignment.</p>
                 </div>
+                <span class="click-hint">👆 Click to expand</span>
             </div>
             
-            <div class="united-card" id="united2">
+            <div class="united-card" id="united2" onclick="toggleUnit(this)">
                 <div class="united-img-container">
                     <img src="assets/project_images/leader2.jpg" alt="The Legislative Unit">
                 </div>
@@ -1855,9 +1941,10 @@
                     <p class="role">Policy & Standards</p>
                     <p class="description">Establishes spiritual and educational standards, creates policies that protect children's welfare and spiritual growth. This unit ensures that all programs adhere to biblical principles and meet the highest educational benchmarks for excellence.</p>
                 </div>
+                <span class="click-hint">👆 Click to expand</span>
             </div>
             
-            <div class="united-card" id="united3">
+            <div class="united-card" id="united3" onclick="toggleUnit(this)">
                 <div class="united-img-container">
                     <img src="assets/project_images/leader3.jpg" alt="The Outreach Unit">
                 </div>
@@ -1866,6 +1953,7 @@
                     <p class="role">Impact & Community</p>
                     <p class="description">Leads community engagement, mobilizes resources, and ensures our mission reaches the most vulnerable children. This unit builds partnerships, coordinates volunteer efforts, and expands our reach to transform more lives through God's love.</p>
                 </div>
+                <span class="click-hint">👆 Click to expand</span>
             </div>
         </div>
     </section>
@@ -2133,6 +2221,18 @@
             member.classList.toggle('active');
         }
         window.toggleTeamMember = toggleTeamMember;
+
+        // Toggle Unit expansion - shows description on click
+        function toggleUnit(card) {
+            card.classList.toggle('expanded');
+            // Close other expanded cards
+            document.querySelectorAll('.united-card').forEach(c => {
+                if (c !== card && c.classList.contains('expanded')) {
+                    c.classList.remove('expanded');
+                }
+            });
+        }
+        window.toggleUnit = toggleUnit;
         
         document.addEventListener('DOMContentLoaded', function() {
             // Current year
@@ -2271,11 +2371,11 @@
             // Keyboard accessibility - united cards
             document.querySelectorAll('.united-card').forEach(card => {
                 card.setAttribute('tabindex', '0');
-                card.setAttribute('role', 'article');
+                card.setAttribute('role', 'button');
                 card.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        this.click();
+                        toggleUnit(this);
                     }
                 });
             });
