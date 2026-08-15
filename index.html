@@ -503,7 +503,7 @@
         }
 
         /* ==================== */
-        /* UNITS SECTION - 90% IMAGE, 10% TEXT (TITLE ONLY, CLICK TO EXPAND) */
+        /* UNITS SECTION - 90% IMAGE, 10% TEXT */
         /* ==================== */
         .united-section {
             padding: 6rem 2rem;
@@ -627,31 +627,6 @@
             color: var(--primary);
         }
 
-        .united-card .click-hint {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-            z-index: 3;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .united-card:hover .click-hint {
-            opacity: 1;
-        }
-
-        .united-card.expanded .click-hint {
-            opacity: 0;
-        }
-
         /* ==================== */
         /* MISSION SECTION */
         /* ==================== */
@@ -734,7 +709,7 @@
         }
 
         /* ==================== */
-        /* PROGRAMS SECTION - 90% IMAGE, 10% TEXT (ALWAYS VISIBLE) */
+        /* PROGRAMS SECTION - 90% IMAGE, 10% TEXT */
         /* ==================== */
         .programs {
             padding: 6rem 2rem;
@@ -775,7 +750,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* IMAGE TAKES 90% OF THE CARD */
         .program-img {
             width: 100%;
             height: 0;
@@ -801,7 +775,6 @@
             transform: scale(1.05);
         }
 
-        /* TEXT TAKES 10% - ALWAYS VISIBLE */
         .program-content {
             padding: 0.5rem 1rem;
             text-align: center;
@@ -1165,6 +1138,66 @@
         .email-link a:hover {
             color: white;
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ==================== */
+        /* PHONE NUMBERS */
+        /* ==================== */
+        .phone-numbers {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .phone-numbers p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .phone-numbers p i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .phone-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .phone-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-link i {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .phone-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 158, 64, 0.4);
+            border-color: var(--accent);
+        }
+
+        .phone-link:hover i {
+            color: white;
         }
 
         .bible-verse-container {
@@ -1560,6 +1593,20 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .phone-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .phone-link {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                font-size: 1rem;
+                padding: 0.6rem 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1687,12 +1734,6 @@
                 font-size: 0.8rem;
             }
             
-            .united-card .click-hint {
-                font-size: 0.6rem;
-                padding: 0.2rem 0.8rem;
-                bottom: 8%;
-            }
-            
             .program-img {
                 padding-bottom: 80%;
             }
@@ -1780,6 +1821,16 @@
             
             .copyright {
                 font-size: 0.75rem;
+            }
+
+            .phone-link {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.8rem;
+                max-width: 240px;
+            }
+            
+            .phone-numbers p {
+                font-size: 0.9rem;
             }
         }
 
@@ -1959,6 +2010,7 @@
                     <h3>The Executive Unit</h3>
                     <p class="role">Vision & Strategy</p>
                     <p class="description">Provides divine direction, oversees operations, and ensures every initiative aligns with God's purpose for our children. This unit is responsible for strategic planning, resource mobilization, and maintaining the highest standards of organizational integrity and spiritual alignment.</p>
+                </div>
             </div>
             
             <div class="united-card" id="united2" onclick="toggleUnit(this)">
@@ -1969,6 +2021,7 @@
                     <h3>The Legislative Unit</h3>
                     <p class="role">Policy & Standards</p>
                     <p class="description">Establishes spiritual and educational standards, creates policies that protect children's welfare and spiritual growth. This unit ensures that all programs adhere to biblical principles and meet the highest educational benchmarks for excellence.</p>
+                </div>
             </div>
             
             <div class="united-card" id="united3" onclick="toggleUnit(this)">
@@ -1979,6 +2032,8 @@
                     <h3>The Outreach Unit</h3>
                     <p class="role">Impact & Community</p>
                     <p class="description">Leads community engagement, mobilizes resources, and ensures our mission reaches the most vulnerable children. This unit builds partnerships, coordinates volunteer efforts, and expands our reach to transform more lives through God's love.</p>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -2010,10 +2065,10 @@
         </div>
     </section>
     
-    <!-- Programs Section - 90% IMAGE, 10% TEXT (ALWAYS VISIBLE) -->
+    <!-- Programs Section -->
     <section id="programs" class="programs">
         <div class="section-title">
-            <h2><span class="typewriter-text">WHERE YOUR DONATION GOES</span></h2>
+            <h2><span class="typewriter-text">💝 WHERE YOUR DONATION GOES</span></h2>
             <p class="slide-left">Every dollar creates <strong>eternal impact</strong> in a child's life</p>
         </div>
         
@@ -2023,7 +2078,7 @@
                     <img src="assets/project_images/toy donation drive.jpg" alt="Education Sponsorship">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">EDUCATION SPONSORSHIP</h3>
+                    <h3 class="program-title">🎯 EDUCATION SPONSORSHIP</h3>
                     <p class="program-desc">$50/month sends one child to school with all supplies</p>
                 </div>
             </div>
@@ -2043,7 +2098,7 @@
                     <img src="assets/project_images/make a donation.jpg" alt="Nutrition Program">
                 </div>
                 <div class="program-content">
-                    <h3 class="program-title">NUTRITION & WELLNESS</h3>
+                    <h3 class="program-title">🍎 NUTRITION & WELLNESS</h3>
                     <p class="program-desc">$25/month feeds a hungry child nutritious meals</p>
                 </div>
             </div>
@@ -2064,7 +2119,7 @@
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">KIZITO STANLEY</h3>
-                    <p class="team-role">Founder & Visionary</p>
+                    <p class="team-role">✝️ Founder & Visionary ✝️</p>
                     <p class="team-desc">"God called me to serve His children. With 15+ years in ministry, I lead with one mission: to see every child know Jesus and reach their God-given potential!"</p>
                 </div>
             </div>
@@ -2075,7 +2130,7 @@
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">DREAM KING</h3>
-                    <p class="team-role">Program Director</p>
+                    <p class="team-role">🌟 Program Director 🌟</p>
                     <p class="team-desc">"I believe every child is a masterpiece created by God. My passion is helping them discover their divine purpose through education and faith!"</p>
                 </div>
             </div>
@@ -2086,7 +2141,7 @@
                 </div>
                 <div class="team-content">
                     <h3 class="team-name">SSEMPIIRA MOSES</h3>
-                    <p class="team-role">Spiritual Development 🙏</p>
+                    <p class="team-role">🙏 Spiritual Development 🙏</p>
                     <p class="team-desc">"My joy is teaching children God's Word and watching them grow into strong Christian leaders who will impact generations!"</p>
                 </div>
             </div>
@@ -2096,7 +2151,7 @@
     <!-- Impact Section -->
     <section id="impact" class="impact">
         <div class="section-title">
-            <h2><span class="typewriter-text"> GOD'S MIRACLES THROUGH YOUR GENEROSITY</span></h2>
+            <h2><span class="typewriter-text">⚡ GOD'S MIRACLES THROUGH YOUR GENEROSITY</span></h2>
             <p class="slide-left">Together, we're writing stories of hope, faith, and transformation!</p>
         </div>
         
@@ -2126,32 +2181,32 @@
     <!-- Blessing Section -->
     <section id="blessing" class="blessing-section">
         <div class="section-title">
-            <h2><span class="typewriter-text">TAKE A BLESSING TODAY!</span></h2>
+            <h2><span class="typewriter-text">💖 TAKE A BLESSING TODAY!</span></h2>
             <p class="slide-left">Your support does MORE than help - it <strong>SAVES LIVES</strong> and builds God's kingdom!</p>
         </div>
         
         <div class="blessing-options">
             <div class="blessing-card">
                 <i class="fas fa-hand-holding-heart"></i>
-                <h3>URGENT DONATIONS</h3>
+                <h3>💰 URGENT DONATIONS</h3>
                 <p><strong>Give today</strong> to provide education, Bibles, and hope to a waiting child. Every gift matters!</p>
             </div>
             
             <div class="blessing-card">
                 <i class="fas fa-user-friends"></i>
-                <h3>MONTHLY PARTNERSHIP 🤝</h3>
+                <h3>🤝 MONTHLY PARTNERSHIP</h3>
                 <p><strong>Join our family</strong> of monthly givers providing consistent support for children's education and spiritual growth.</p>
             </div>
             
             <div class="blessing-card">
                 <i class="fas fa-pray"></i>
-                <h3>PRAYER WARRIORS 🙏</h3>
+                <h3>🙏 PRAYER WARRIORS</h3>
                 <p><strong>Join our prayer team</strong> covering our children, staff, and mission in prayer. Spiritual support is priceless!</p>
             </div>
             
             <div class="blessing-card">
                 <i class="fas fa-gift"></i>
-                <h3>PRACTICAL GIFTS</h3>
+                <h3>🎁 PRACTICAL GIFTS</h3>
                 <p><strong>Donate supplies</strong>: Bibles, school materials, uniforms, or food. Tangible blessings make immediate impact!</p>
             </div>
         </div>
@@ -2193,6 +2248,18 @@
             
             <div class="email-link">
                 <p>Need immediate assistance? Email us: <a href="mailto:sapphire02.org@gmail.com">sapphire02.org@gmail.com</a></p>
+            </div>
+            
+            <div class="phone-numbers">
+                <p><i class="fas fa-phone"></i> Call or WhatsApp us:</p>
+                <div class="phone-list">
+                    <a href="tel:+256700123456" class="phone-link">
+                        <i class="fas fa-phone-alt"></i> +256 700 123 456
+                    </a>
+                    <a href="tel:+256701234567" class="phone-link">
+                        <i class="fas fa-phone-alt"></i> +256 701 234 567
+                    </a>
+                </div>
             </div>
             
             <div class="bible-verse-container">
