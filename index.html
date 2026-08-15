@@ -503,7 +503,7 @@
         }
 
         /* ==================== */
-        /* UNITS SECTION - 90% IMAGE, 10% TEXT (TITLE ONLY) */
+        /* UNITS SECTION - 90% IMAGE, 10% TEXT (TITLE ONLY, CLICK TO EXPAND) */
         /* ==================== */
         .united-section {
             padding: 6rem 2rem;
@@ -547,7 +547,6 @@
         .united-card:nth-child(2) { border-top-color: #4ECDC4; transition-delay: 0.2s; }
         .united-card:nth-child(3) { border-top-color: #FFE66D; transition-delay: 0.3s; }
 
-        /* IMAGE TAKES 90% OF THE CARD */
         .united-img-container {
             width: 100%;
             height: 0;
@@ -574,7 +573,6 @@
             transform: scale(1.05);
         }
 
-        /* TEXT TAKES 10% - TITLE ONLY VISIBLE */
         .united-card-content {
             padding: 0.5rem 1rem;
             text-align: center;
@@ -611,7 +609,6 @@
             margin-top: 0;
         }
 
-        /* EXPANDED STATE - SHOW FULL DESCRIPTION */
         .united-card.expanded .united-img-container {
             padding-bottom: 60%;
         }
@@ -630,7 +627,6 @@
             color: var(--primary);
         }
 
-        /* Click indicator */
         .united-card .click-hint {
             position: absolute;
             bottom: 10%;
@@ -738,7 +734,7 @@
         }
 
         /* ==================== */
-        /* PROGRAMS SECTION - REDUCED TEXT, LARGER IMAGES */
+        /* PROGRAMS SECTION - 90% IMAGE, 10% TEXT (ALWAYS VISIBLE) */
         /* ==================== */
         .programs {
             padding: 6rem 2rem;
@@ -747,7 +743,7 @@
 
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -761,6 +757,8 @@
             transition: transform 0.3s ease;
             opacity: 0;
             transform: translateY(30px);
+            display: flex;
+            flex-direction: column;
         }
 
         .program-card.visible {
@@ -774,15 +772,24 @@
 
         .program-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
+        /* IMAGE TAKES 90% OF THE CARD */
         .program-img {
-            height: 260px;
+            width: 100%;
+            height: 0;
+            padding-bottom: 90%;
             overflow: hidden;
+            position: relative;
             background: #f0f0f0;
+            flex-shrink: 0;
         }
 
         .program-img img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -794,21 +801,25 @@
             transform: scale(1.05);
         }
 
+        /* TEXT TAKES 10% - ALWAYS VISIBLE */
         .program-content {
-            padding: 1.5rem;
+            padding: 0.5rem 1rem;
             text-align: center;
+            flex-shrink: 0;
+            background: white;
         }
 
         .program-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.1rem;
             color: var(--primary);
         }
 
         .program-desc {
             color: #555;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 0;
         }
 
         /* ==================== */
@@ -1497,6 +1508,27 @@
                 font-size: 0.85rem;
             }
             
+            .program-card {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            
+            .program-img {
+                padding-bottom: 85%;
+            }
+            
+            .program-content {
+                padding: 0.4rem 1rem;
+            }
+            
+            .program-title {
+                font-size: 0.9rem;
+            }
+            
+            .program-desc {
+                font-size: 0.75rem;
+            }
+            
             .mission-card {
                 min-height: 280px;
                 padding: 2rem 1.5rem;
@@ -1505,15 +1537,6 @@
             .mission-card h3 {
                 font-size: 1.3rem;
                 min-height: 2.5rem;
-            }
-            
-            .program-card {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            
-            .program-img {
-                height: 200px;
             }
             
             .team-member {
@@ -1670,6 +1693,22 @@
                 bottom: 8%;
             }
             
+            .program-img {
+                padding-bottom: 80%;
+            }
+            
+            .program-content {
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .program-title {
+                font-size: 0.85rem;
+            }
+            
+            .program-desc {
+                font-size: 0.7rem;
+            }
+            
             .vision-card {
                 padding: 1.5rem;
             }
@@ -1703,18 +1742,6 @@
             
             .mission-card p {
                 font-size: 0.95rem;
-            }
-            
-            .program-img {
-                height: 160px;
-            }
-            
-            .program-title {
-                font-size: 1.1rem;
-            }
-            
-            .program-desc {
-                font-size: 0.9rem;
             }
             
             .team-img {
@@ -1785,6 +1812,10 @@
             }
             
             .united-img-container {
+                padding-bottom: 75%;
+            }
+            
+            .program-img {
                 padding-bottom: 75%;
             }
         }
@@ -1912,7 +1943,7 @@
         </div>
     </section>
     
-    <!-- Units Section - 90% IMAGE, 10% TEXT (TITLE ONLY, CLICK TO EXPAND) -->
+    <!-- Units Section -->
     <section id="united" class="united-section">
         <div class="section-title">
             <h2><span class="typewriter-text">MEET THE UNITS</span></h2>
@@ -1986,7 +2017,7 @@
         </div>
     </section>
     
-    <!-- Programs Section - REDUCED TEXT, LARGER IMAGES -->
+    <!-- Programs Section - 90% IMAGE, 10% TEXT (ALWAYS VISIBLE) -->
     <section id="programs" class="programs">
         <div class="section-title">
             <h2><span class="typewriter-text">💝 WHERE YOUR DONATION GOES</span></h2>
@@ -2000,7 +2031,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">🎯 EDUCATION SPONSORSHIP</h3>
-                    <p class="program-desc">$50/month sends one child to school with all supplies. Your gift breaks the cycle of poverty through education.</p>
+                    <p class="program-desc">$50/month sends one child to school with all supplies</p>
                 </div>
             </div>
             
@@ -2010,7 +2041,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">📖 BIBLE DISCIPLESHIP</h3>
-                    <p class="program-desc">$30/month provides Bibles, study materials, and Christian mentorship. Building God's kingdom one child at a time!</p>
+                    <p class="program-desc">$30/month provides Bibles, study materials, and mentorship</p>
                 </div>
             </div>
             
@@ -2020,7 +2051,7 @@
                 </div>
                 <div class="program-content">
                     <h3 class="program-title">🍎 NUTRITION & WELLNESS</h3>
-                    <p class="program-desc">$25/month feeds a hungry child nutritious meals. Healthy bodies + educated minds = transformed lives!</p>
+                    <p class="program-desc">$25/month feeds a hungry child nutritious meals</p>
                 </div>
             </div>
         </div>
@@ -2222,10 +2253,9 @@
         }
         window.toggleTeamMember = toggleTeamMember;
 
-        // Toggle Unit expansion - shows description on click
+        // Toggle Unit expansion
         function toggleUnit(card) {
             card.classList.toggle('expanded');
-            // Close other expanded cards
             document.querySelectorAll('.united-card').forEach(c => {
                 if (c !== card && c.classList.contains('expanded')) {
                     c.classList.remove('expanded');
@@ -2249,7 +2279,6 @@
                 navIcons.classList.toggle('active');
             });
             
-            // Close menu when clicking outside
             document.addEventListener('click', function(e) {
                 if (!header.contains(e.target)) {
                     hamburger.classList.remove('active');
@@ -2282,37 +2311,30 @@
                 });
             }, observerOptions);
             
-            // Observe all elements with slide effects
             document.querySelectorAll('.slide-left, .slide-right').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe united cards
             document.querySelectorAll('.united-card').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe mission cards
             document.querySelectorAll('.mission-card').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe program cards
             document.querySelectorAll('.program-card').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe team members
             document.querySelectorAll('.team-member').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe stats
             document.querySelectorAll('.stat').forEach(el => {
                 observer.observe(el);
             });
             
-            // Observe blessing cards
             document.querySelectorAll('.blessing-card').forEach(el => {
                 observer.observe(el);
             });
@@ -2348,7 +2370,6 @@
                 }, 6000);
             }
             
-            // Keyboard accessibility - close menu with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     hamburger.classList.remove('active');
@@ -2356,7 +2377,6 @@
                 }
             });
             
-            // Keyboard accessibility - team members
             document.querySelectorAll('.team-member').forEach(member => {
                 member.setAttribute('tabindex', '0');
                 member.setAttribute('role', 'button');
@@ -2368,7 +2388,6 @@
                 });
             });
             
-            // Keyboard accessibility - united cards
             document.querySelectorAll('.united-card').forEach(card => {
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('role', 'button');
@@ -2380,7 +2399,6 @@
                 });
             });
             
-            // Keyboard accessibility - blessing cards
             document.querySelectorAll('.blessing-card').forEach(card => {
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('role', 'button');
